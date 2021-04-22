@@ -9,8 +9,6 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var store = Store()
 
-    @State var latest: Latest?
-
     var body: some View {
         VStack {
             Button("Refresh") {
@@ -18,13 +16,17 @@ struct ContentView: View {
             }
             .padding()
 
-            switch store.latest {
+            switch store.coinToBTCInfo {
             case .success(let result):
                 Text("\(result.status.total_count)")
                     .padding()
             case .failure(let error):
-                Text("\(error.localizedDescription)")
-                    .padding()
+                if let _ = error as? Store.EmptyError {
+                    Text("0")
+                } else {
+                    Text("\(error.localizedDescription)")
+                        .padding()
+                }
             }
         }
     }

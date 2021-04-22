@@ -1,5 +1,5 @@
 //
-//  Coin.swift
+//  CoinsToBtcInfo.swift
 //  CryptoCombine
 //
 //  Created by Viktor Kushnerov on 22.04.21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Latest: Decodable {
+struct CoinsToBtcInfo: Decodable {
     struct Status: Decodable {
         let total_count: Int
     }
