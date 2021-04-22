@@ -1,80 +1,57 @@
 //
 //  ContentView.swift
-//  Shared
+//  CryptoCombine
 //
 //  Created by Viktor Kushnerov on 22.04.21.
 //
-
+import Combine
+import Foundation
 import SwiftUI
-import CoreData
+
+class Store: ObservableObject {
+    typealias Output = Result<Latest, Error>
+
+    @Published var latest = Output.success(Latest(status: Latest.Status(total_count: 0)))
+
+    func refreshCoinsInfoToBTC() {
+        if let url = Bundle.main.url(forResource: "CoinMarketCap-latest", withExtension: "json") {
+            URLSession.shared.dataTaskPublisher(for: url)
+                .map(\.data)
+                .decode(type: Latest.self, decoder: JSONDecoder())
+                .eraseToAnyPublisher()
+                .asResult()
+                .receive(on: DispatchQueue.main)
+                .assign(to: &$latest)
+        }
+    }
+}
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @StateObject var store = Store()
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    @State var latest: Latest?
 
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+        VStack {
+            Button("Refresh") {
+                store.refreshCoinsInfoToBTC()
             }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
+            .padding()
 
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
-            }
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            switch store.latest {
+            case .success(let result):
+                Text("\(result.status.total_count)")
+                    .padding()
+            case .failure(let error):
+                Text("\(error.localizedDescription)")
+                    .padding()
             }
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }
