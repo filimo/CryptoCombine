@@ -17,9 +17,10 @@ struct ContentView: View {
             .padding([.horizontal, .top])
 
             coinsStatusView
+                .padding()
 
             coinsListView
-                .padding(.horizontal)
+                .padding([.horizontal, .bottom])
         }
         .frame(minWidth: 500, minHeight: 500)
         .onReceive(store.$coinToBTCInfoPublisher, perform: { coinsInfo in
@@ -30,33 +31,72 @@ struct ContentView: View {
         })
     }
 
+    @ViewBuilder
     private var coinsStatusView: some View {
-        Group {
-            switch store.coinToBTCInfoPublisher {
-            case .success:
+        switch store.coinToBTCInfoPublisher {
+        case .success:
+            Text("\(store.coinToBTCInfo?.status.total_count ?? 0)")
+        case .failure(let error):
+            if let error = error as? CustomError,
+               error == .empty
+            {
                 Text("\(store.coinToBTCInfo?.status.total_count ?? 0)")
-            case .failure(let error):
-                if let error = error as? CustomError,
-                   error == .empty
-                {
-                    Text("\(store.coinToBTCInfo?.status.total_count ?? 0)")
-                } else {
-                    Text("\(error.localizedDescription)")
-                }
+            } else {
+                Text("\(error.localizedDescription)")
             }
         }
-        .padding()
     }
 
     private var coinsListView: some View {
-        ScrollView {
-            ForEach(store.coinToBTCInfo?.data ?? [], id: \.id) { coin in
-                HStack {
-                    Text(coin.name)
-                    
-                    Spacer()
+        let columns = [
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+        ]
+
+        return ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                coinsListHeaderView
+
+                ForEach(store.coinToBTCInfo?.data ?? [], id: \.id) { coin in
+                    HStack {
+                        Text("\(coin.name) (\(coin.symbol))")
+                        Spacer()
+                    }
+
+                    cellView(coin.quoteBTC.price)
+                    cellView(coin.quoteBTC.percent_change_1h)
+                    cellView(coin.quoteBTC.percent_change_24h)
+                    cellView(coin.quoteBTC.percent_change_7d)
+                    cellView(coin.quoteBTC.percent_change_30d)
+                    cellView(coin.quoteBTC.percent_change_60d)
+                    cellView(coin.quoteBTC.percent_change_90d)
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    private var coinsListHeaderView: some View {
+        Text("Name")
+        Text("Price")
+        Text("1h")
+        Text("24h")
+        Text("7d")
+        Text("30d")
+        Text("60d")
+        Text("90d")
+    }
+
+    private func cellView(_ value: Double) -> some View {
+        HStack {
+            Spacer()
+            Text("\(value)")
         }
     }
 }
