@@ -31,6 +31,10 @@
 		F0B124302632005E00C9BF24 /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1242E2632005E00C9BF24 /* Publisher.swift */; };
 		F0B1243726320C1300C9BF24 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1243626320C1300C9BF24 /* Store.swift */; };
 		F0B1243826320C1300C9BF24 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1243626320C1300C9BF24 /* Store.swift */; };
+		F0B1244B2632A94400C9BF24 /* Published.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1244A2632A94300C9BF24 /* Published.swift */; };
+		F0B1244C2632A94400C9BF24 /* Published.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1244A2632A94300C9BF24 /* Published.swift */; };
+		F0B124622632AF6F00C9BF24 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B124612632AF6F00C9BF24 /* CustomError.swift */; };
+		F0B124632632AF6F00C9BF24 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B124612632AF6F00C9BF24 /* CustomError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,8 @@
 		F0B1241F2631F28400C9BF24 /* CoinsToBtcInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsToBtcInfo.swift; sourceTree = "<group>"; };
 		F0B1242E2632005E00C9BF24 /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		F0B1243626320C1300C9BF24 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		F0B1244A2632A94300C9BF24 /* Published.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Published.swift; sourceTree = "<group>"; };
+		F0B124612632AF6F00C9BF24 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 		F0B123BB2631EBD700C9BF24 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F0B124602632AF5000C9BF24 /* Errors */,
 				F0B124162631EDFE00C9BF24 /* Extensions */,
 				F0B1243526320C0200C9BF24 /* Store */,
 				F0B1241E2631F27100C9BF24 /* Models */,
@@ -185,8 +192,8 @@
 		F0B124162631EDFE00C9BF24 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F0B124172631EE1600C9BF24 /* URLSession.swift */,
-				F0B1242E2632005E00C9BF24 /* Publisher.swift */,
+				F0B1245A2632AD4500C9BF24 /* Combine */,
+				F0B124552632AD3B00C9BF24 /* Foundation */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -205,6 +212,31 @@
 				F0B1243626320C1300C9BF24 /* Store.swift */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		F0B124552632AD3B00C9BF24 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				F0B124172631EE1600C9BF24 /* URLSession.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		F0B1245A2632AD4500C9BF24 /* Combine */ = {
+			isa = PBXGroup;
+			children = (
+				F0B1244A2632A94300C9BF24 /* Published.swift */,
+				F0B1242E2632005E00C9BF24 /* Publisher.swift */,
+			);
+			path = Combine;
+			sourceTree = "<group>";
+		};
+		F0B124602632AF5000C9BF24 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				F0B124612632AF6F00C9BF24 /* CustomError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,10 +400,12 @@
 			files = (
 				F0B1242F2632005E00C9BF24 /* Publisher.swift in Sources */,
 				F0B123EA2631EBDA00C9BF24 /* CryptoCombineApp.swift in Sources */,
+				F0B1244B2632A94400C9BF24 /* Published.swift in Sources */,
 				F0B124092631EC3400C9BF24 /* ContentView.swift in Sources */,
 				F0B1243726320C1300C9BF24 /* Store.swift in Sources */,
 				F0B124182631EE1600C9BF24 /* URLSession.swift in Sources */,
 				F0B123EE2631EBDA00C9BF24 /* Persistence.swift in Sources */,
+				F0B124622632AF6F00C9BF24 /* CustomError.swift in Sources */,
 				F0B123E82631EBDA00C9BF24 /* CryptoCombine.xcdatamodeld in Sources */,
 				F0B123EC2631EBDA00C9BF24 /* CloudKitView.swift in Sources */,
 				F0B124202631F28400C9BF24 /* CoinsToBtcInfo.swift in Sources */,
@@ -384,10 +418,12 @@
 			files = (
 				F0B124302632005E00C9BF24 /* Publisher.swift in Sources */,
 				F0B123EB2631EBDA00C9BF24 /* CryptoCombineApp.swift in Sources */,
+				F0B1244C2632A94400C9BF24 /* Published.swift in Sources */,
 				F0B1240A2631EC3400C9BF24 /* ContentView.swift in Sources */,
 				F0B1243826320C1300C9BF24 /* Store.swift in Sources */,
 				F0B124192631EE1600C9BF24 /* URLSession.swift in Sources */,
 				F0B123EF2631EBDA00C9BF24 /* Persistence.swift in Sources */,
+				F0B124632632AF6F00C9BF24 /* CustomError.swift in Sources */,
 				F0B123E92631EBDA00C9BF24 /* CryptoCombine.xcdatamodeld in Sources */,
 				F0B123ED2631EBDA00C9BF24 /* CloudKitView.swift in Sources */,
 				F0B124212631F28400C9BF24 /* CoinsToBtcInfo.swift in Sources */,

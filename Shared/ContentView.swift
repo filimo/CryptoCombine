@@ -21,7 +21,8 @@ struct ContentView: View {
                 Text("\(result.status.total_count)")
                     .padding()
             case .failure(let error):
-                if let _ = error as? Store.EmptyError {
+                if let error = error as? CustomError,
+                   error == .empty {
                     Text("0")
                 } else {
                     Text("\(error.localizedDescription)")

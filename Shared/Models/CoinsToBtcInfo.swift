@@ -8,9 +8,13 @@
 import Foundation
 
 struct CoinsToBtcInfo: Decodable {
+    let status: Status
+}
+
+extension CoinsToBtcInfo {
     struct Status: Decodable {
         let total_count: Int
+        let error_code: Int
+        let error_message: String?
     }
-    
-    let status: Status
 }

@@ -4,27 +4,24 @@
 //
 //  Created by Viktor Kushnerov on 22.04.21.
 //
-import Foundation
 import Combine
+import Foundation
 
 class Store: ObservableObject {
-    enum EmptyError: Error {
-        case empty
-    }
-    
     typealias Output = Result<CoinsToBtcInfo, Error>
 
-    @Published var coinToBTCInfo = Output.failure(EmptyError.empty)
+    @Published private(set) var coinToBTCInfo = Output.failure(CustomError.empty)
 
     func refreshCoinsInfoToBTC() {
-        if let url = Bundle.main.url(forResource: "CoinMarketCap-btc-latest", withExtension: "json") {
-            URLSession.shared.dataTaskPublisher(for: url)
-                .map(\.data)
-                .decode(type: CoinsToBtcInfo.self, decoder: JSONDecoder())
-                .eraseToAnyPublisher()
-                .asResult()
-                .receive(on: DispatchQueue.main)
-                .assign(to: &$coinToBTCInfo)
+        let fileName = "CoinMarketCap-btc-latest"
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+            coinToBTCInfo = Output.failure(CustomError.fileNotFound(fileName))
+            return
         }
+
+        URLSession.shared.dataTaskPublisher(for: url)
+            .asResult()
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$coinToBTCInfo)
     }
 }
