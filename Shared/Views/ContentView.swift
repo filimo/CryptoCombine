@@ -4,6 +4,7 @@
 //
 //  Created by Viktor Kushnerov on 22.04.21.
 //
+import Foundation
 import SwiftUI
 
 struct ContentView: View {
@@ -24,6 +25,12 @@ struct ContentView: View {
 
                 TextField("Input coin name", text: $store.coinNameFilter)
                     .frame(maxWidth: 100)
+                
+                Button(action: {
+                    store.coinNameFilter = Pasteboard.string
+                }, label: {
+                    Image(systemName: "square.and.arrow.down.fill")
+                })
             }
             .padding([.horizontal, .top])
 

@@ -1,5 +1,5 @@
 //
-//  CoinView.swift
+//  CoinRowView.swift
 //  CryptoCombine
 //
 //  Created by Viktor Kushnerov on 23.04.21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CoinView: View {
+struct CoinRowView: View {
     @Binding var coin: CoinInfo
 
     @StateObject var store = Store.shared
@@ -57,7 +57,7 @@ struct CoinView: View {
     }
 }
 
-struct CoinView_Previews: PreviewProvider {
+struct CoinRowView_Previews: PreviewProvider {
     static var previews: some View {
         CoinsListView()
     }

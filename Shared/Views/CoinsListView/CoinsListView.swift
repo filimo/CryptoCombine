@@ -27,7 +27,7 @@ struct CoinsListView: View {
                 coinsListHeaderView
 
                 ForEach(store.coinToBTCInfo?.data ?? [], id: \.id) { coin in
-                    CoinView(coin: .constant(coin))
+                    CoinRowView(coin: .constant(coin))
                 }
             }
         }
