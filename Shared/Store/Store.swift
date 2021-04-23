@@ -19,6 +19,8 @@ class Store: ObservableObject {
     @Published var coinNameFilter = ""
     
     @Published(key: "coinToBTCInfo") var coinToBTCInfo: CoinsToBtcInfo? = nil
+    @Published(key: "extraCoinInfoList") var extraCoinInfoList: ExtraCoinInfoList = [:]
+    
     @Published(key: "onlyFavoritedCoins") var onlyFavoritedCoins = false
     @Published(key: "CMC_PRO_API_KEY") var CMC_PRO_API_KEY = ""
     

@@ -16,9 +16,9 @@ struct CoinRowView: View {
     var body: some View {
         if filterByFavorite, filterByName {
             HStack {
-                Image(systemName: coin.isFavorite == true ? "star.fill" : "star")
+                Image(systemName: store.extraCoinInfoList[coin.id]?.isFavorite == true ? "star.fill" : "star")
                     .onTapGesture {
-                        CoinInfo.toggleFavorite(coin: coin)
+                        ExtraCoinInfoList.toggleFavorite(coin: coin)
                     }
 
                 Text("\(coin.name) (\(coin.symbol))")
@@ -27,6 +27,8 @@ struct CoinRowView: View {
             }
 
             TextField("Count", text: $count)
+                .frame(maxWidth: 100)
+            
             cellView(coin.quoteBTC.price)
             cellView(coin.quoteBTC.percent_change_1h)
             cellView(coin.quoteBTC.percent_change_24h)
@@ -39,7 +41,7 @@ struct CoinRowView: View {
 
     var filterByFavorite: Bool {
         (store.onlyFavoritedCoins &&
-            coin.isFavorite == true) ||
+            store.extraCoinInfoList[coin.id]?.isFavorite == true) ||
             store.onlyFavoritedCoins == false
     }
 
