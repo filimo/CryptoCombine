@@ -12,6 +12,7 @@ class Store: ObservableObject {
 
     @Published private(set) var coinToBTCInfoPublisher = Output.failure(CustomError.empty)
     @Published(key: "coinToBTCInfo") var coinToBTCInfo: CoinsToBtcInfo? = nil
+    @Published(key: "onlyFavoritedCoins") var onlyFavoritedCoins = false
 
     func refreshCoinsInfoToBTC() {
         let fileName = "CoinMarketCap-btc-latest"

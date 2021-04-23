@@ -11,13 +11,18 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Button("Refresh") {
-                store.refreshCoinsInfoToBTC()
+            HStack {
+                Button("Refresh") {
+                    store.refreshCoinsInfoToBTC()
+                }
+
+                coinsStatusView
+                    .padding()
+
+                Toggle("Favorite", isOn: $store.onlyFavoritedCoins)
+                    .toggleStyle(SwitchToggleStyle(tint: .green))
             }
             .padding([.horizontal, .top])
-
-            coinsStatusView
-                .padding()
 
             coinsListView
                 .padding([.horizontal, .bottom])
@@ -64,18 +69,31 @@ struct ContentView: View {
                 coinsListHeaderView
 
                 ForEach(store.coinToBTCInfo?.data ?? [], id: \.id) { coin in
-                    HStack {
-                        Text("\(coin.name) (\(coin.symbol))")
-                        Spacer()
-                    }
+                    if (store.onlyFavoritedCoins &&
+                        coin.isFavorite == true) ||
+                        store.onlyFavoritedCoins == false
+                    {
+                        HStack {
+                            Image(systemName: coin.isFavorite == true ? "star.fill" : "star")
+                                .onTapGesture {
+                                    if let index = store.coinToBTCInfo?.data.firstIndex(where: { $0.symbol == coin.symbol }) {
+                                        store.coinToBTCInfo?.data[index].isFavorite = !(store.coinToBTCInfo?.data[index].isFavorite ?? false)
+                                    }
+                                }
 
-                    cellView(coin.quoteBTC.price)
-                    cellView(coin.quoteBTC.percent_change_1h)
-                    cellView(coin.quoteBTC.percent_change_24h)
-                    cellView(coin.quoteBTC.percent_change_7d)
-                    cellView(coin.quoteBTC.percent_change_30d)
-                    cellView(coin.quoteBTC.percent_change_60d)
-                    cellView(coin.quoteBTC.percent_change_90d)
+                            Text("\(coin.name) (\(coin.symbol))")
+
+                            Spacer()
+                        }
+
+                        cellView(coin.quoteBTC.price)
+                        cellView(coin.quoteBTC.percent_change_1h)
+                        cellView(coin.quoteBTC.percent_change_24h)
+                        cellView(coin.quoteBTC.percent_change_7d)
+                        cellView(coin.quoteBTC.percent_change_30d)
+                        cellView(coin.quoteBTC.percent_change_60d)
+                        cellView(coin.quoteBTC.percent_change_90d)
+                    }
                 }
             }
         }

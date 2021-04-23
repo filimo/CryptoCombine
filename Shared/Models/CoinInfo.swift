@@ -8,6 +8,8 @@
 import Foundation
 
 struct CoinInfo: Codable, Identifiable {
+    var isFavorite: Bool? = false
+
     let id: Int
     let name: String
     let symbol: String
@@ -31,5 +33,9 @@ extension CoinInfo {
 extension CoinInfo {
     var quoteBTC: Quote {
         quote["BTC"]!
+    }
+    
+    mutating func toggleFavorite() {
+        isFavorite = !(isFavorite ?? false)
     }
 }
