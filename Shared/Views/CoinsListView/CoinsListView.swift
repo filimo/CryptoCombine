@@ -13,14 +13,14 @@ struct CoinsListView: View {
     var body: some View {
         let columns = [
             GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
+            GridItem(.fixed(150)),
+            GridItem(.fixed(150)),
+            GridItem(.fixed(100)),
+            GridItem(.fixed(100)),
+            GridItem(.fixed(100)),
+            GridItem(.fixed(100)),
+            GridItem(.fixed(100)),
+            GridItem(.fixed(100)),
         ]
 
         return ScrollView {
@@ -28,7 +28,7 @@ struct CoinsListView: View {
                 coinsListHeaderView
 
                 ForEach(store.coinToBTCInfo?.data ?? [], id: \.id) { coin in
-                    CoinRowView(coin: .constant(coin))
+                    CoinRowView(coin: coin)
                 }
             }
         }

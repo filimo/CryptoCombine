@@ -26,6 +26,11 @@ extension ExtraCoinInfoList {
         Store.shared.extraCoinInfoList[coin.id]?.isFavorite = !(Store.shared.extraCoinInfoList[coin.id]?.isFavorite ?? false)
     }
 
+    static func setFavorite(coin: CoinInfo) {
+        initIfNeeded(coin: coin)
+        Store.shared.extraCoinInfoList[coin.id]?.isFavorite = true
+    }
+
     static func setCount(coin: CoinInfo, count: Double) {
         initIfNeeded(coin: coin)
         Store.shared.extraCoinInfoList[coin.id]?.count = count

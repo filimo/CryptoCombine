@@ -8,10 +8,30 @@
 import SwiftUI
 
 struct CoinRowView: View {
-    @Binding var coin: CoinInfo
+    var coin: CoinInfo
 
     @ObservedObject var store = Store.shared
-    @State var count: String = ""
+
+    private var count: Binding<String> {
+        Binding<String>(
+            get: {
+                "\(store.extraCoinInfoList[coin.id]?.count ?? 0)"
+            },
+            set: {
+                ExtraCoinInfoList.setCount(coin: coin, count: Double($0) ?? 0)
+            }
+        )
+    }
+
+    static let priceFormat: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.allowsFloats = true
+        return formatter
+    }()
+
+    init(coin: CoinInfo) {
+        self.coin = coin
+    }
 
     var body: some View {
         if filterByFavorite, filterByName {
@@ -26,16 +46,26 @@ struct CoinRowView: View {
                 Spacer()
             }
 
-            TextField("Count", text: $count)
-                .frame(maxWidth: 100)
-            
-            cellView(coin.quoteBTC.price)
-            cellView(coin.quoteBTC.percent_change_1h)
-            cellView(coin.quoteBTC.percent_change_24h)
-            cellView(coin.quoteBTC.percent_change_7d)
-            cellView(coin.quoteBTC.percent_change_30d)
-            cellView(coin.quoteBTC.percent_change_60d)
-            cellView(coin.quoteBTC.percent_change_90d)
+            HStack {
+                TextField("Count",
+                          text: count)
+                    .frame(maxWidth: 100)
+
+                Button(action: {
+                    count.wrappedValue = Pasteboard.string
+                    ExtraCoinInfoList.setFavorite(coin: coin)
+                }, label: {
+                    Image(systemName: "square.and.arrow.down.fill")
+                })
+            }
+
+            priceCellView(coin.quoteBTC.price)
+            percentCellView(coin.quoteBTC.percent_change_1h)
+            percentCellView(coin.quoteBTC.percent_change_24h)
+            percentCellView(coin.quoteBTC.percent_change_7d)
+            percentCellView(coin.quoteBTC.percent_change_30d)
+            percentCellView(coin.quoteBTC.percent_change_60d)
+            percentCellView(coin.quoteBTC.percent_change_90d)
         }
     }
 
@@ -48,13 +78,34 @@ struct CoinRowView: View {
     var filterByName: Bool {
         store.coinNameFilter.isEmpty
             || (store.coinNameFilter.isEmpty == false
-                    && coin.symbol.range(of: store.coinNameFilter, options: .caseInsensitive) != nil)
+                && coin.symbol.range(of: store.coinNameFilter, options: .caseInsensitive) != nil)
     }
 
-    private func cellView(_ value: Double) -> some View {
-        HStack {
+    private func priceCellView(_ value: Double) -> some View {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.minimumIntegerDigits = 1
+        numberFormatter.minimumFractionDigits = 10
+        numberFormatter.maximumFractionDigits = 10
+        
+        numberFormatter.string(from: NSNumber(value: value))
+
+        return HStack {
             Spacer()
-            Text("\(value)")
+            Text(numberFormatter.string(from: NSNumber(value: value)) ?? "")
+        }
+    }
+
+    private func percentCellView(_ value: Double) -> some View {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.minimumIntegerDigits = 1
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        
+        numberFormatter.string(from: NSNumber(value: value))
+
+        return HStack {
+            Spacer()
+            Text(numberFormatter.string(from: NSNumber(value: value)) ?? "")
         }
     }
 }
