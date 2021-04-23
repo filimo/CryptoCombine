@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct CoinsToBtcInfo: Decodable {
+struct CoinsToBtcInfo: Codable {
     let status: Status
 }
 
 extension CoinsToBtcInfo {
-    struct Status: Decodable {
+    struct Status: Codable {
         let total_count: Int
         let error_code: Int
         let error_message: String?

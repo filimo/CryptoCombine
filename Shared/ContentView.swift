@@ -16,20 +16,31 @@ struct ContentView: View {
             }
             .padding()
 
-            switch store.coinToBTCInfo {
-            case .success(let result):
-                Text("\(result.status.total_count)")
-                    .padding()
+            coinsView
+        }
+        .onReceive(store.$coinToBTCInfoPublisher, perform: { coinsInfo in
+            if let coinsInfo = try? coinsInfo.get() {
+                store.coinToBTCInfo = coinsInfo
+            }
+        })
+    }
+
+    private var coinsView: some View {
+        Group {
+            switch store.coinToBTCInfoPublisher {
+            case .success:
+                Text("\(store.coinToBTCInfo?.status.total_count ?? 0)")
             case .failure(let error):
                 if let error = error as? CustomError,
-                   error == .empty {
-                    Text("0")
+                   error == .empty
+                {
+                    Text("\(store.coinToBTCInfo?.status.total_count ?? 0)")
                 } else {
                     Text("\(error.localizedDescription)")
-                        .padding()
                 }
             }
         }
+        .padding()
     }
 }
 
