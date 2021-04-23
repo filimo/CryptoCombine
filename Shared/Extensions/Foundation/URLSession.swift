@@ -13,8 +13,8 @@ extension URLSession {
         case statusCode(HTTPURLResponse)
     }
 
-    func dataTaskPublisher<T: Decodable>(for url: URL) -> AnyPublisher<T, Error> {
-        dataTaskPublisher(for: url)
+    func dataTaskPublisher<T: Decodable>(for request: URLRequest) -> AnyPublisher<T, Error> {
+        dataTaskPublisher(for: request)
             .tryMap { (data, response) -> Data in
                 if let response = response as? HTTPURLResponse,
                    (200 ..< 300).contains(response.statusCode) == false

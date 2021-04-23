@@ -13,21 +13,38 @@ class Store: ObservableObject {
     
     typealias Output = Result<CoinsToBtcInfo, Error>
 
-    @Published private(set) var coinToBTCInfoPublisher = Output.failure(CustomError.empty)
+    @Published private(set) var coinToBTCInfoPublisher = Output.failure(CustomError.empty) 
+    
+    
     @Published var coinNameFilter = ""
     
     @Published(key: "coinToBTCInfo") var coinToBTCInfo: CoinsToBtcInfo? = nil
     @Published(key: "onlyFavoritedCoins") var onlyFavoritedCoins = false
+    @Published(key: "CMC_PRO_API_KEY") var CMC_PRO_API_KEY = ""
     
 
     func refreshCoinsInfoToBTC() {
-        let fileName = "CoinMarketCap-btc-latest"
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
-            coinToBTCInfoPublisher = Output.failure(CustomError.fileNotFound(fileName))
-            return
-        }
+        let urlString = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest"
+        
+        var components = URLComponents(string: urlString)!
 
-        URLSession.shared.dataTaskPublisher(for: url)
+        components.queryItems = [
+            URLQueryItem(name: "start", value: "1"),
+            URLQueryItem(name: "limit", value: "5000"),
+            URLQueryItem(name: "convert", value: "BTC")
+        ]
+        
+        var request = URLRequest(url: components.url!)
+        
+        request.setValue(CMC_PRO_API_KEY, forHTTPHeaderField: "X-CMC_PRO_API_KEY")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+
+//        guard let url = URL(string: urlString) else {
+//            coinToBTCInfoPublisher = Output.failure(CustomError.fileNotFound(urlString))
+//            return
+//        }
+
+        URLSession.shared.dataTaskPublisher(for: request)
             .asResult()
             .receive(on: DispatchQueue.main)
             .assign(to: &$coinToBTCInfoPublisher)

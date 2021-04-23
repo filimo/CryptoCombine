@@ -10,7 +10,8 @@ import SwiftUI
 struct CoinRowView: View {
     @Binding var coin: CoinInfo
 
-    @StateObject var store = Store.shared
+    @ObservedObject var store = Store.shared
+    @State var count: String = ""
 
     var body: some View {
         if filterByFavorite, filterByName {
@@ -25,6 +26,7 @@ struct CoinRowView: View {
                 Spacer()
             }
 
+            TextField("Count", text: $count)
             cellView(coin.quoteBTC.price)
             cellView(coin.quoteBTC.percent_change_1h)
             cellView(coin.quoteBTC.percent_change_24h)

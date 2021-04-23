@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct CoinsListView: View {
-    @StateObject var store = Store.shared
+    @ObservedObject var store = Store.shared
 
     var body: some View {
         let columns = [
+            GridItem(.flexible()),
             GridItem(.flexible()),
             GridItem(.flexible()),
             GridItem(.flexible()),
@@ -36,6 +37,7 @@ struct CoinsListView: View {
     @ViewBuilder
     private var coinsListHeaderView: some View {
         Text("Name")
+        Text("Count")
         Text("Price")
         Text("1h")
         Text("24h")

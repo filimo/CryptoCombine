@@ -13,11 +13,13 @@ struct CoinInfo: Codable, Identifiable {
     let id: Int
     let name: String
     let symbol: String
-    let quote: [String: Quote]
+    var quote: [String: Quote]
 }
 
 extension CoinInfo {
     struct Quote: Codable {
+        var count: Double? = 0
+        
         let price: Double
         let volume_24h: Double
         let percent_change_1h: Double
@@ -38,6 +40,12 @@ extension CoinInfo {
     static func toggleFavorite(coin: CoinInfo) {
         if let index = Store.shared.coinToBTCInfo?.data.firstIndex(where: { $0.id == coin.id }) {
             Store.shared.coinToBTCInfo?.data[index].isFavorite = !(Store.shared.coinToBTCInfo?.data[index].isFavorite ?? false)
+        }
+    }
+
+    static func setCount(coin: CoinInfo, count: Double) {
+        if let index = Store.shared.coinToBTCInfo?.data.firstIndex(where: { $0.id == coin.id }) {
+            Store.shared.coinToBTCInfo?.data[index].quote["BTC"]?.count = count
         }
     }
 }

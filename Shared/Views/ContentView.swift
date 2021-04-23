@@ -8,11 +8,14 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var store = Store.shared
-
+    @ObservedObject var store = Store.shared
+    
     var body: some View {
         VStack {
             HStack {
+                TextField("CMC_PRO_API_KEY", text: $store.CMC_PRO_API_KEY)
+                    .frame(maxWidth: 200)
+                
                 Button("Refresh") {
                     store.refreshCoinsInfoToBTC()
                 }
