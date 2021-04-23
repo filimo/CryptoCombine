@@ -8,11 +8,17 @@ import Combine
 import Foundation
 
 class Store: ObservableObject {
+    private init() {}
+    static let shared = Store()
+    
     typealias Output = Result<CoinsToBtcInfo, Error>
 
     @Published private(set) var coinToBTCInfoPublisher = Output.failure(CustomError.empty)
+    @Published var coinNameFilter = ""
+    
     @Published(key: "coinToBTCInfo") var coinToBTCInfo: CoinsToBtcInfo? = nil
     @Published(key: "onlyFavoritedCoins") var onlyFavoritedCoins = false
+    
 
     func refreshCoinsInfoToBTC() {
         let fileName = "CoinMarketCap-btc-latest"
