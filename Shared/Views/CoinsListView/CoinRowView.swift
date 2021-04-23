@@ -17,9 +17,7 @@ struct CoinRowView: View {
             HStack {
                 Image(systemName: coin.isFavorite == true ? "star.fill" : "star")
                     .onTapGesture {
-                        if let index = store.coinToBTCInfo?.data.firstIndex(where: { $0.symbol == coin.symbol }) {
-                            store.coinToBTCInfo?.data[index].isFavorite = !(store.coinToBTCInfo?.data[index].isFavorite ?? false)
-                        }
+                        CoinInfo.toggleFavorite(coin: coin)
                     }
 
                 Text("\(coin.name) (\(coin.symbol))")

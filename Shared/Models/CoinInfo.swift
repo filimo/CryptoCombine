@@ -35,7 +35,9 @@ extension CoinInfo {
         quote["BTC"]!
     }
     
-    mutating func toggleFavorite() {
-        isFavorite = !(isFavorite ?? false)
+    static func toggleFavorite(coin: CoinInfo) {
+        if let index = Store.shared.coinToBTCInfo?.data.firstIndex(where: { $0.id == coin.id }) {
+            Store.shared.coinToBTCInfo?.data[index].isFavorite = !(Store.shared.coinToBTCInfo?.data[index].isFavorite ?? false)
+        }
     }
 }
