@@ -9,6 +9,7 @@ import Foundation
 
 struct CoinsToBtcInfo: Codable {
     let status: Status
+    var data: [CoinInfo] = []
 }
 
 extension CoinsToBtcInfo {
@@ -16,5 +17,13 @@ extension CoinsToBtcInfo {
         let total_count: Int
         let error_code: Int
         let error_message: String?
+    }
+}
+
+extension CoinsToBtcInfo {
+    mutating func sortedByName() {
+        data = data.sorted { a, b in
+            a.name < b.name
+        }
     }
 }

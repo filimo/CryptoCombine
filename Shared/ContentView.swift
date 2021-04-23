@@ -14,18 +14,23 @@ struct ContentView: View {
             Button("Refresh") {
                 store.refreshCoinsInfoToBTC()
             }
-            .padding()
+            .padding([.horizontal, .top])
 
-            coinsView
+            coinsStatusView
+
+            coinsListView
+                .padding(.horizontal)
         }
+        .frame(minWidth: 500, minHeight: 500)
         .onReceive(store.$coinToBTCInfoPublisher, perform: { coinsInfo in
-            if let coinsInfo = try? coinsInfo.get() {
+            if var coinsInfo = try? coinsInfo.get() {
+                coinsInfo.sortedByName()
                 store.coinToBTCInfo = coinsInfo
             }
         })
     }
 
-    private var coinsView: some View {
+    private var coinsStatusView: some View {
         Group {
             switch store.coinToBTCInfoPublisher {
             case .success:
@@ -41,6 +46,18 @@ struct ContentView: View {
             }
         }
         .padding()
+    }
+
+    private var coinsListView: some View {
+        ScrollView {
+            ForEach(store.coinToBTCInfo?.data ?? [], id: \.id) { coin in
+                HStack {
+                    Text(coin.name)
+                    
+                    Spacer()
+                }
+            }
+        }
     }
 }
 

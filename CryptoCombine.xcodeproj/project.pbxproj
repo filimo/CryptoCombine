@@ -35,6 +35,8 @@
 		F0B1244C2632A94400C9BF24 /* Published.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1244A2632A94300C9BF24 /* Published.swift */; };
 		F0B124622632AF6F00C9BF24 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B124612632AF6F00C9BF24 /* CustomError.swift */; };
 		F0B124632632AF6F00C9BF24 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B124612632AF6F00C9BF24 /* CustomError.swift */; };
+		F0B1246D2632CEC000C9BF24 /* CoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1246C2632CEC000C9BF24 /* CoinInfo.swift */; };
+		F0B1246E2632CEC000C9BF24 /* CoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1246C2632CEC000C9BF24 /* CoinInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,7 @@
 		F0B1243626320C1300C9BF24 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		F0B1244A2632A94300C9BF24 /* Published.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Published.swift; sourceTree = "<group>"; };
 		F0B124612632AF6F00C9BF24 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		F0B1246C2632CEC000C9BF24 /* CoinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				F0B1241F2631F28400C9BF24 /* CoinsToBtcInfo.swift */,
+				F0B1246C2632CEC000C9BF24 /* CoinInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -408,6 +412,7 @@
 				F0B124622632AF6F00C9BF24 /* CustomError.swift in Sources */,
 				F0B123E82631EBDA00C9BF24 /* CryptoCombine.xcdatamodeld in Sources */,
 				F0B123EC2631EBDA00C9BF24 /* CloudKitView.swift in Sources */,
+				F0B1246D2632CEC000C9BF24 /* CoinInfo.swift in Sources */,
 				F0B124202631F28400C9BF24 /* CoinsToBtcInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +431,7 @@
 				F0B124632632AF6F00C9BF24 /* CustomError.swift in Sources */,
 				F0B123E92631EBDA00C9BF24 /* CryptoCombine.xcdatamodeld in Sources */,
 				F0B123ED2631EBDA00C9BF24 /* CloudKitView.swift in Sources */,
+				F0B1246E2632CEC000C9BF24 /* CoinInfo.swift in Sources */,
 				F0B124212631F28400C9BF24 /* CoinsToBtcInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
