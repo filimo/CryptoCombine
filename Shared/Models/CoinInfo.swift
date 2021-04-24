@@ -51,5 +51,25 @@ extension CoinInfo {
 extension CoinInfo {
     var quoteBTC: Quote {
         quote["BTC"]!
-    }    
+    }
+    
+    var count: Double {
+        Store.shared.extraCoinInfoList[id]?.count ?? 0
+    }
+    
+    var totalBTC: Double {
+        quoteBTC.price * count
+    }
+
+    var totalUSD: Double {
+        priceUSD * count
+    }
+        
+    var priceUSD: Double {
+        return usdCoinInfo?.price ?? 0
+    }
+    
+    var usdCoinInfo: CoinInfo.Quote? {
+        return Store.shared.coinToUSDInfo?.data.first { $0.id == id }?.quote["USD"]
+    }
 }

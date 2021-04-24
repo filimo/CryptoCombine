@@ -41,6 +41,10 @@
 		F0B124762632F19700C9BF24 /* CoinsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B124742632F19700C9BF24 /* CoinsListView.swift */; };
 		F0B124802632F30400C9BF24 /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1247F2632F30400C9BF24 /* CoinRowView.swift */; };
 		F0B124812632F30400C9BF24 /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1247F2632F30400C9BF24 /* CoinRowView.swift */; };
+		F0B2635F26345B040027910C /* PercentesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2635E26345B040027910C /* PercentesView.swift */; };
+		F0B2636026345B040027910C /* PercentesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2635E26345B040027910C /* PercentesView.swift */; };
+		F0B2636626345C1E0027910C /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2636526345C1E0027910C /* NumberFormatter.swift */; };
+		F0B2636726345C1E0027910C /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2636526345C1E0027910C /* NumberFormatter.swift */; };
 		F0D3831B263333A000F5AAFA /* ExtraCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */; };
 		F0D3831C263333A000F5AAFA /* ExtraCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */; };
 		F0D38322263403C400F5AAFA /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D38321263403C400F5AAFA /* Application.swift */; };
@@ -92,6 +96,8 @@
 		F0B1246C2632CEC000C9BF24 /* CoinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfo.swift; sourceTree = "<group>"; };
 		F0B124742632F19700C9BF24 /* CoinsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListView.swift; sourceTree = "<group>"; };
 		F0B1247F2632F30400C9BF24 /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
+		F0B2635E26345B040027910C /* PercentesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentesView.swift; sourceTree = "<group>"; };
+		F0B2636526345C1E0027910C /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraCoinInfo.swift; sourceTree = "<group>"; };
 		F0D38321263403C400F5AAFA /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -244,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				F0B124172631EE1600C9BF24 /* URLSession.swift */,
+				F0B2636526345C1E0027910C /* NumberFormatter.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -280,6 +287,7 @@
 			children = (
 				F0B124742632F19700C9BF24 /* CoinsListView.swift */,
 				F0B1247F2632F30400C9BF24 /* CoinRowView.swift */,
+				F0B2635E26345B040027910C /* PercentesView.swift */,
 			);
 			path = CoinsListView;
 			sourceTree = "<group>";
@@ -451,6 +459,7 @@
 				F0B1242F2632005E00C9BF24 /* Publisher.swift in Sources */,
 				F0B123EA2631EBDA00C9BF24 /* CryptoCombineApp.swift in Sources */,
 				F0D38322263403C400F5AAFA /* Application.swift in Sources */,
+				F0B2636626345C1E0027910C /* NumberFormatter.swift in Sources */,
 				F05111F92633030500537630 /* Pasteboard.swift in Sources */,
 				F0B1244B2632A94400C9BF24 /* Published.swift in Sources */,
 				F0B124752632F19700C9BF24 /* CoinsListView.swift in Sources */,
@@ -464,6 +473,7 @@
 				F0B123E82631EBDA00C9BF24 /* CryptoCombine.xcdatamodeld in Sources */,
 				F0B123EC2631EBDA00C9BF24 /* CloudKitView.swift in Sources */,
 				F0B1246D2632CEC000C9BF24 /* CoinInfo.swift in Sources */,
+				F0B2635F26345B040027910C /* PercentesView.swift in Sources */,
 				F0B124202631F28400C9BF24 /* CoinsToBtcInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +485,7 @@
 				F0B124302632005E00C9BF24 /* Publisher.swift in Sources */,
 				F0B123EB2631EBDA00C9BF24 /* CryptoCombineApp.swift in Sources */,
 				F0D38323263403C400F5AAFA /* Application.swift in Sources */,
+				F0B2636726345C1E0027910C /* NumberFormatter.swift in Sources */,
 				F05111FA2633030500537630 /* Pasteboard.swift in Sources */,
 				F0B1244C2632A94400C9BF24 /* Published.swift in Sources */,
 				F0B124762632F19700C9BF24 /* CoinsListView.swift in Sources */,
@@ -488,6 +499,7 @@
 				F0B123E92631EBDA00C9BF24 /* CryptoCombine.xcdatamodeld in Sources */,
 				F0B123ED2631EBDA00C9BF24 /* CloudKitView.swift in Sources */,
 				F0B1246E2632CEC000C9BF24 /* CoinInfo.swift in Sources */,
+				F0B2636026345B040027910C /* PercentesView.swift in Sources */,
 				F0B124212631F28400C9BF24 /* CoinsToBtcInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,13 +14,13 @@ struct CoinsListView: View {
         let columns = [
             GridItem(.flexible()),
             GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible())
+            GridItem(.flexible(), alignment: .trailing),
+            GridItem(.flexible(), alignment: .trailing),
+            GridItem(.flexible(), alignment: .trailing),
+            GridItem(.flexible(), alignment: .trailing),
+            GridItem(.flexible(), alignment: .trailing),
+            GridItem(.flexible(), alignment: .trailing),
+            GridItem(.flexible(), alignment: .trailing)
         ]
 
         return ScrollView {
