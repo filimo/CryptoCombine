@@ -43,6 +43,8 @@
 		F0B124812632F30400C9BF24 /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B1247F2632F30400C9BF24 /* CoinRowView.swift */; };
 		F0D3831B263333A000F5AAFA /* ExtraCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */; };
 		F0D3831C263333A000F5AAFA /* ExtraCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */; };
+		F0D38322263403C400F5AAFA /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D38321263403C400F5AAFA /* Application.swift */; };
+		F0D38323263403C400F5AAFA /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D38321263403C400F5AAFA /* Application.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,7 @@
 		F0B124742632F19700C9BF24 /* CoinsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListView.swift; sourceTree = "<group>"; };
 		F0B1247F2632F30400C9BF24 /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraCoinInfo.swift; sourceTree = "<group>"; };
+		F0D38321263403C400F5AAFA /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				F05111F82633030500537630 /* Pasteboard.swift */,
+				F0D38321263403C400F5AAFA /* Application.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -446,6 +450,7 @@
 			files = (
 				F0B1242F2632005E00C9BF24 /* Publisher.swift in Sources */,
 				F0B123EA2631EBDA00C9BF24 /* CryptoCombineApp.swift in Sources */,
+				F0D38322263403C400F5AAFA /* Application.swift in Sources */,
 				F05111F92633030500537630 /* Pasteboard.swift in Sources */,
 				F0B1244B2632A94400C9BF24 /* Published.swift in Sources */,
 				F0B124752632F19700C9BF24 /* CoinsListView.swift in Sources */,
@@ -469,6 +474,7 @@
 			files = (
 				F0B124302632005E00C9BF24 /* Publisher.swift in Sources */,
 				F0B123EB2631EBDA00C9BF24 /* CryptoCombineApp.swift in Sources */,
+				F0D38323263403C400F5AAFA /* Application.swift in Sources */,
 				F05111FA2633030500537630 /* Pasteboard.swift in Sources */,
 				F0B1244C2632A94400C9BF24 /* Published.swift in Sources */,
 				F0B124762632F19700C9BF24 /* CoinsListView.swift in Sources */,

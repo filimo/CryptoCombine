@@ -13,24 +13,25 @@ struct CoinsListView: View {
     var body: some View {
         let columns = [
             GridItem(.flexible()),
-            GridItem(.fixed(150)),
-            GridItem(.fixed(150)),
-            GridItem(.fixed(100)),
-            GridItem(.fixed(100)),
-            GridItem(.fixed(100)),
-            GridItem(.fixed(100)),
-            GridItem(.fixed(100)),
-            GridItem(.fixed(100)),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible())
         ]
 
         return ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
+            LazyVGrid(columns: columns, spacing: 10) {
                 coinsListHeaderView
 
                 ForEach(store.coinToBTCInfo?.data ?? [], id: \.id) { coin in
                     CoinRowView(coin: coin)
                 }
             }
+            .padding(.horizontal)
         }
     }
 

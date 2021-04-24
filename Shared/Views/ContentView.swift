@@ -9,15 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var store = Store.shared
-    
+
     var body: some View {
         VStack {
             HStack {
                 TextField("CMC_PRO_API_KEY", text: $store.CMC_PRO_API_KEY)
                     .frame(maxWidth: 200)
-                
+
                 Button("Refresh") {
-                    store.refreshCoinsInfoToBTC()
+                    store.refreshCoinsInfo(convert: "BTC")
+                    store.refreshCoinsInfo(convert: "USD")
                 }
 
                 coinsStatusView
@@ -28,7 +29,7 @@ struct ContentView: View {
 
                 TextField("Input coin name", text: $store.coinNameFilter)
                     .frame(maxWidth: 100)
-                
+
                 Button(action: {
                     store.coinNameFilter = Pasteboard.string
                 }, label: {
@@ -45,6 +46,24 @@ struct ContentView: View {
             if var coinsInfo = try? coinsInfo.get() {
                 coinsInfo.sortedByName()
                 store.coinToBTCInfo = coinsInfo
+
+//                for coin in coinsInfo.data {
+//                    if let index = store.coinToBTCInfo?.data.firstIndex(where: { $0.id == coin.id }) {
+//                        coinsInfo.data[index].quote[""] = store.coinToUSDInfo?.data
+//                    }
+//                }
+            }
+        })
+        .onReceive(store.$coinToUSDInfoPublisher, perform: { coinsInfo in
+            if var coinsInfo = try? coinsInfo.get() {
+                coinsInfo.sortedByName()
+                store.coinToUSDInfo = coinsInfo
+
+//                for coin in coinsInfo.data {
+//                    if let index = store.coinToBTCInfo?.data.firstIndex(where: { $0.id == coin.id }) {
+//                        coinsInfo.data[index].quote[""] = store.coinToUSDInfo?.data
+//                    }
+//                }
             }
         })
     }

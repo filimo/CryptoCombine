@@ -30,6 +30,7 @@ struct CoinInfo: Codable, Identifiable {
     var id: Int
     let name: String
     let symbol: String
+    let slug: String
     var quote: [String: Quote]
 }
 
