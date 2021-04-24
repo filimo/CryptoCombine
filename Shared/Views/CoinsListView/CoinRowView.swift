@@ -78,7 +78,7 @@ struct CoinRowView: View {
     var filterByName: Bool {
         store.coinNameFilter.isEmpty
             || (store.coinNameFilter.isEmpty == false
-                && coin.symbol.range(of: store.coinNameFilter, options: .caseInsensitive) != nil)
+                    && coin.symbol == store.coinNameFilter.uppercased())
     }
 
     private func priceCellView(_ value: Double) -> some View {
