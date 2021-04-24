@@ -45,6 +45,7 @@
 		F0B2636026345B040027910C /* PercentesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2635E26345B040027910C /* PercentesView.swift */; };
 		F0B2636626345C1E0027910C /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2636526345C1E0027910C /* NumberFormatter.swift */; };
 		F0B2636726345C1E0027910C /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2636526345C1E0027910C /* NumberFormatter.swift */; };
+		F0CB8BC32634675A005A044C /* Release_macOS_1.0_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = F0CB8BC22634675A005A044C /* Release_macOS_1.0_0001.png */; };
 		F0D3831B263333A000F5AAFA /* ExtraCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */; };
 		F0D3831C263333A000F5AAFA /* ExtraCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */; };
 		F0D38322263403C400F5AAFA /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D38321263403C400F5AAFA /* Application.swift */; };
@@ -98,6 +99,7 @@
 		F0B1247F2632F30400C9BF24 /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		F0B2635E26345B040027910C /* PercentesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentesView.swift; sourceTree = "<group>"; };
 		F0B2636526345C1E0027910C /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		F0CB8BC22634675A005A044C /* Release_macOS_1.0_0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Release_macOS_1.0_0001.png; sourceTree = "<group>"; };
 		F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraCoinInfo.swift; sourceTree = "<group>"; };
 		F0D38321263403C400F5AAFA /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +148,7 @@
 		F0B123B62631EBD700C9BF24 = {
 			isa = PBXGroup;
 			children = (
+				F0CB8BBD26346709005A044C /* Assets */,
 				F0B123BB2631EBD700C9BF24 /* Shared */,
 				F0B123C82631EBDA00C9BF24 /* iOS */,
 				F0B123CF2631EBDA00C9BF24 /* macOS */,
@@ -280,6 +283,14 @@
 				F0B124082631EC3400C9BF24 /* ContentView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F0CB8BBD26346709005A044C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F0CB8BC22634675A005A044C /* Release_macOS_1.0_0001.png */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		F0DE40092632FD7F0035C42B /* CoinsListView */ = {
@@ -423,6 +434,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0CB8BC32634675A005A044C /* Release_macOS_1.0_0001.png in Resources */,
 				F0B123F02631EBDA00C9BF24 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -700,6 +712,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 0001;
 				DEVELOPMENT_TEAM = B6QRXW5YF2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -724,6 +737,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 0001;
 				DEVELOPMENT_TEAM = B6QRXW5YF2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
