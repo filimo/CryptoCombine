@@ -52,7 +52,11 @@ extension CoinInfo {
     var quoteBTC: Quote {
         quote["BTC"]!
     }
-    
+
+    var quoteUSD: Quote {
+        quote["USD"]!
+    }
+
     var count: Double {
         Store.shared.extraCoinInfoList[id]?.count ?? 0
     }
@@ -66,10 +70,6 @@ extension CoinInfo {
     }
         
     var priceUSD: Double {
-        return usdCoinInfo?.price ?? 0
-    }
-    
-    var usdCoinInfo: CoinInfo.Quote? {
-        return Store.shared.coinToUSDInfo?.data.first { $0.id == id }?.quote["USD"]
+        return quote["USD"]?.price ?? 0
     }
 }

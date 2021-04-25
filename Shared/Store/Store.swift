@@ -18,8 +18,7 @@ class Store: ObservableObject {
 
     @Published var coinNameFilter = ""
 
-    @Published(key: "coinToBTCInfo") var coinToBTCInfo: CoinsToBtcInfo? = nil
-    @Published(key: "coinToUSDInfo") var coinToUSDInfo: CoinsToBtcInfo? = nil
+    @Published var coinToBTCInfo: CoinsToBtcInfo? = nil
     
     @Published(key: "extraCoinInfoList") var extraCoinInfoList: ExtraCoinInfoList = [:]
 

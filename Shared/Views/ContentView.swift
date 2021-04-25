@@ -16,8 +16,6 @@ struct ContentView: View {
         Publishers.CombineLatest(
             store.$coinToBTCInfoPublisher,
             store.$coinToUSDInfoPublisher)
-//            .handleEvents(receiveOutput: { (coinToBtcInfo, coinToUSDInfo) in
-//            })
             .eraseToAnyPublisher()
     }
 
@@ -58,10 +56,17 @@ struct ContentView: View {
         }
         .frame(minWidth: 500, minHeight: 500)
         .onReceive(responsePublisher, perform: { coinsBTCInfo, coinUSDInfo in
-            if case let .success(coinsBTCInfo) = coinsBTCInfo,
-               case let .success(coinUSDInfo) = coinUSDInfo {
+            if case var .success(coinsBTCInfo) = coinsBTCInfo,
+               case let .success(coinUSDInfo) = coinUSDInfo
+            {
+                for coin in coinUSDInfo.data {
+                    if let btcIndex = coinsBTCInfo.data.firstIndex(where: { $0.id == coin.id }),
+                       let usdIndex = coinUSDInfo.data.firstIndex(where: { $0.id == coin.id })
+                    {
+                        coinsBTCInfo.data[btcIndex].quote["USD"] = coinUSDInfo.data[usdIndex].quoteUSD
+                    }
+                }
                 store.coinToBTCInfo = coinsBTCInfo
-                store.coinToUSDInfo = coinUSDInfo
             }
         })
     }
@@ -71,7 +76,7 @@ struct ContentView: View {
         switch store.coinToBTCInfoPublisher {
         case .success:
             Text("\(store.coinToBTCInfo?.status.total_count ?? 0)")
-        case .failure(let error):
+        case let .failure(error):
             if let error = error as? CustomError,
                error == .empty
             {
