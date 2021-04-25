@@ -5,8 +5,6 @@
 //  Created by Viktor Kushnerov on 22.04.21.
 //
 
-import Foundation
-
 struct CoinsToBtcInfo: Codable {
     let status: Status
     var data: [CoinInfo] = []
@@ -27,3 +25,5 @@ extension CoinsToBtcInfo {
         }
     }
 }
+
+typealias CoinsToBtcInfoResult = Result<CoinsToBtcInfo, Error>

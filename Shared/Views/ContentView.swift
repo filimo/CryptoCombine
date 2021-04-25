@@ -4,16 +4,27 @@
 //
 //  Created by Viktor Kushnerov on 22.04.21.
 //
+import Combine
 import Foundation
 import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var store = Store.shared
 
+    private var responsePublisher:
+        AnyPublisher<(CoinsToBtcInfoResult, CoinsToBtcInfoResult), Never> {
+        Publishers.CombineLatest(
+            store.$coinToBTCInfoPublisher,
+            store.$coinToUSDInfoPublisher)
+//            .handleEvents(receiveOutput: { (coinToBtcInfo, coinToUSDInfo) in
+//            })
+            .eraseToAnyPublisher()
+    }
+
     init() {
 //        store.coinToBTCInfo?.data = [] //for tests
     }
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -46,28 +57,11 @@ struct ContentView: View {
                 .padding([.horizontal, .bottom])
         }
         .frame(minWidth: 500, minHeight: 500)
-        .onReceive(store.$coinToBTCInfoPublisher, perform: { coinsInfo in
-            if var coinsInfo = try? coinsInfo.get() {
-                coinsInfo.sortedByName()
-                store.coinToBTCInfo = coinsInfo
-
-//                for coin in coinsInfo.data {
-//                    if let index = store.coinToBTCInfo?.data.firstIndex(where: { $0.id == coin.id }) {
-//                        coinsInfo.data[index].quote[""] = store.coinToUSDInfo?.data
-//                    }
-//                }
-            }
-        })
-        .onReceive(store.$coinToUSDInfoPublisher, perform: { coinsInfo in
-            if var coinsInfo = try? coinsInfo.get() {
-                coinsInfo.sortedByName()
-                store.coinToUSDInfo = coinsInfo
-
-//                for coin in coinsInfo.data {
-//                    if let index = store.coinToBTCInfo?.data.firstIndex(where: { $0.id == coin.id }) {
-//                        coinsInfo.data[index].quote[""] = store.coinToUSDInfo?.data
-//                    }
-//                }
+        .onReceive(responsePublisher, perform: { coinsBTCInfo, coinUSDInfo in
+            if case let .success(coinsBTCInfo) = coinsBTCInfo,
+               case let .success(coinUSDInfo) = coinUSDInfo {
+                store.coinToBTCInfo = coinsBTCInfo
+                store.coinToUSDInfo = coinUSDInfo
             }
         })
     }
