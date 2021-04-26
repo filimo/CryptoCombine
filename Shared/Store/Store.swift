@@ -25,7 +25,7 @@ class Store: ObservableObject {
     @Published(key: "onlyFavoritedCoins") var onlyFavoritedCoins = false
     @Published(key: "CMC_PRO_API_KEY") var CMC_PRO_API_KEY = ""
 
-    func refreshCoinsInfo(convert: String) {
+    func requestCoinsInfo(convert: String) -> URLRequest {
         let urlString = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest"
 
         var components = URLComponents(string: urlString)!
@@ -40,6 +40,12 @@ class Store: ObservableObject {
 
         request.setValue(CMC_PRO_API_KEY, forHTTPHeaderField: "X-CMC_PRO_API_KEY")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        return request
+    }
+    
+    func refreshCoinsInfo(convert: String) {
+        let request = requestCoinsInfo(convert: convert)
 
 //        guard let url = URL(string: urlString) else {
 //            coinToBTCInfoPublisher = Output.failure(CustomError.fileNotFound(urlString))

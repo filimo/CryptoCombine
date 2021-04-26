@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+
     @ObservedObject var store = Store.shared
 
     private var responsePublisher:
@@ -19,8 +21,11 @@ struct ContentView: View {
             .eraseToAnyPublisher()
     }
 
+    @State var coinsBtcCanellable: AnyCancellable?
+
     init() {
 //        store.coinsInfo?.data = [] //for tests
+        print("Documents Directory: ", FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last ?? "Not Found!")
     }
 
     var body: some View {
@@ -30,8 +35,9 @@ struct ContentView: View {
                     .frame(maxWidth: 200)
 
                 Button("Refresh") {
-                    store.refreshCoinsInfo(convert: "BTC")
-                    store.refreshCoinsInfo(convert: "USD")
+//                    store.refreshCoinsInfo(convert: "BTC")
+//                    store.refreshCoinsInfo(convert: "USD")
+                    requestToCoinMarketCap()
                 }
 
                 coinsStatusView
@@ -55,20 +61,20 @@ struct ContentView: View {
                 .padding([.horizontal, .bottom])
         }
         .frame(minWidth: 500, minHeight: 500)
-        .onReceive(responsePublisher, perform: { coinsBTCInfo, coinUSDInfo in
-            if case var .success(coinsBTCInfo) = coinsBTCInfo,
-               case let .success(coinUSDInfo) = coinUSDInfo
-            {
-                for coin in coinUSDInfo.data {
-                    if let btcIndex = coinsBTCInfo.data.firstIndex(where: { $0.id == coin.id }),
-                       let usdIndex = coinUSDInfo.data.firstIndex(where: { $0.id == coin.id })
-                    {
-                        coinsBTCInfo.data[btcIndex].quote["USD"] = coinUSDInfo.data[usdIndex].quoteUSD
-                    }
-                }
-                store.coinsInfo = coinsBTCInfo
-            }
-        })
+//        .onReceive(responsePublisher, perform: { coinsBTCInfo, coinUSDInfo in
+//            if case var .success(coinsBTCInfo) = coinsBTCInfo,
+//               case let .success(coinUSDInfo) = coinUSDInfo
+//            {
+//                for coin in coinUSDInfo.data {
+//                    if let btcIndex = coinsBTCInfo.data.firstIndex(where: { $0.id == coin.id }),
+//                       let usdIndex = coinUSDInfo.data.firstIndex(where: { $0.id == coin.id })
+//                    {
+//                        coinsBTCInfo.data[btcIndex].quote["USD"] = coinUSDInfo.data[usdIndex].quoteUSD
+//                    }
+//                }
+//                store.coinsInfo = coinsBTCInfo
+//            }
+//        })
     }
 
     @ViewBuilder
@@ -85,6 +91,29 @@ struct ContentView: View {
                 Text("\(error.localizedDescription)")
             }
         }
+    }
+
+    func requestToCoinMarketCap() {
+//        URLSession.shared
+//            .dataTaskPublisher(for: Store.shared.requestCoinsInfo(convert: "BTC"))
+        //        .replaceError(with: Coins())
+//            .map(\.data)
+        coinsBtcCanellable = Just(Mock.results)
+            .eraseToAnyPublisher()
+            .sink(
+                receiveCompletion: { error in
+                    print(error)
+                },
+                receiveValue: { data in
+                    do {
+                        Coins.decoder.userInfo[.managedObjectContext] = viewContext
+                        _ = try Coins.decoder.decode(Coins.self, from: data)
+
+                        try viewContext.save()
+                    } catch {
+                        print(error)
+                    }
+                })
     }
 }
 

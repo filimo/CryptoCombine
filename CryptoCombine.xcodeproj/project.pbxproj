@@ -7,8 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F01106852636ADF1001319B0 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01106842636ADF1001319B0 /* Coins.swift */; };
+		F01106862636ADF1001319B0 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01106842636ADF1001319B0 /* Coins.swift */; };
+		F01106902636AEFC001319B0 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011068F2636AEFC001319B0 /* Status.swift */; };
+		F01106912636AEFC001319B0 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011068F2636AEFC001319B0 /* Status.swift */; };
+		F01106982636B0B1001319B0 /* CodingUserInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01106972636B0B1001319B0 /* CodingUserInfoKey.swift */; };
+		F01106992636B0B1001319B0 /* CodingUserInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01106972636B0B1001319B0 /* CodingUserInfoKey.swift */; };
 		F05111F92633030500537630 /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05111F82633030500537630 /* Pasteboard.swift */; };
 		F05111FA2633030500537630 /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05111F82633030500537630 /* Pasteboard.swift */; };
+		F091C0F32636FCAE00053BA3 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091C0F22636FCAE00053BA3 /* DateFormatter.swift */; };
+		F091C0F42636FCAE00053BA3 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091C0F22636FCAE00053BA3 /* DateFormatter.swift */; };
+		F091C10A2636FDC300053BA3 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091C1092636FDC300053BA3 /* Mock.swift */; };
+		F091C10B2636FDC300053BA3 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091C1092636FDC300053BA3 /* Mock.swift */; };
 		F0B123DB2631EBDA00C9BF24 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B123DA2631EBDA00C9BF24 /* Tests_iOS.swift */; };
 		F0B123E62631EBDA00C9BF24 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B123E52631EBDA00C9BF24 /* Tests_macOS.swift */; };
 		F0B123E82631EBDA00C9BF24 /* CryptoCombine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0B123BC2631EBD700C9BF24 /* CryptoCombine.xcdatamodeld */; };
@@ -46,6 +56,8 @@
 		F0B2636626345C1E0027910C /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2636526345C1E0027910C /* NumberFormatter.swift */; };
 		F0B2636726345C1E0027910C /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2636526345C1E0027910C /* NumberFormatter.swift */; };
 		F0CB8BC32634675A005A044C /* Release_macOS_1.0_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = F0CB8BC22634675A005A044C /* Release_macOS_1.0_0001.png */; };
+		F0D1AAFF2636BC4600740AA0 /* DecoderConfigurationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1AAFE2636BC4600740AA0 /* DecoderConfigurationError.swift */; };
+		F0D1AB002636BC4600740AA0 /* DecoderConfigurationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1AAFE2636BC4600740AA0 /* DecoderConfigurationError.swift */; };
 		F0D3831B263333A000F5AAFA /* ExtraCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */; };
 		F0D3831C263333A000F5AAFA /* ExtraCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */; };
 		F0D38322263403C400F5AAFA /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D38321263403C400F5AAFA /* Application.swift */; };
@@ -70,7 +82,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F01106842636ADF1001319B0 /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
+		F011068F2636AEFC001319B0 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		F01106972636B0B1001319B0 /* CodingUserInfoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingUserInfoKey.swift; sourceTree = "<group>"; };
 		F05111F82633030500537630 /* Pasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
+		F091C0F22636FCAE00053BA3 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		F091C1092636FDC300053BA3 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		F0B123BD2631EBD700C9BF24 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		F0B123BE2631EBD700C9BF24 /* CryptoCombineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCombineApp.swift; sourceTree = "<group>"; };
 		F0B123BF2631EBD700C9BF24 /* CloudKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitView.swift; sourceTree = "<group>"; };
@@ -100,6 +117,7 @@
 		F0B2635E26345B040027910C /* PercentesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentesView.swift; sourceTree = "<group>"; };
 		F0B2636526345C1E0027910C /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		F0CB8BC22634675A005A044C /* Release_macOS_1.0_0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Release_macOS_1.0_0001.png; sourceTree = "<group>"; };
+		F0D1AAFE2636BC4600740AA0 /* DecoderConfigurationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderConfigurationError.swift; sourceTree = "<group>"; };
 		F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraCoinInfo.swift; sourceTree = "<group>"; };
 		F0D38321263403C400F5AAFA /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +154,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F01106962636B0A6001319B0 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		F05111F7263302ED00537630 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +168,14 @@
 				F0D38321263403C400F5AAFA /* Application.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		F091C1042636FDA200053BA3 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F091C1092636FDC300053BA3 /* Mock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		F0B123B62631EBD700C9BF24 = {
@@ -161,6 +194,7 @@
 		F0B123BB2631EBD700C9BF24 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F091C1042636FDA200053BA3 /* Mocks */,
 				F05111F7263302ED00537630 /* Utils */,
 				F0B124602632AF5000C9BF24 /* Errors */,
 				F0B124162631EDFE00C9BF24 /* Extensions */,
@@ -224,6 +258,7 @@
 		F0B124162631EDFE00C9BF24 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F01106962636B0A6001319B0 /* CoreData */,
 				F0DE40162632FF8B0035C42B /* UIKit */,
 				F0B1245A2632AD4500C9BF24 /* Combine */,
 				F0B124552632AD3B00C9BF24 /* Foundation */,
@@ -234,6 +269,8 @@
 		F0B1241E2631F27100C9BF24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F01106842636ADF1001319B0 /* Coins.swift */,
+				F011068F2636AEFC001319B0 /* Status.swift */,
 				F0B1241F2631F28400C9BF24 /* CoinsInfo.swift */,
 				F0B1246C2632CEC000C9BF24 /* CoinInfo.swift */,
 				F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */,
@@ -252,8 +289,10 @@
 		F0B124552632AD3B00C9BF24 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				F01106972636B0B1001319B0 /* CodingUserInfoKey.swift */,
 				F0B124172631EE1600C9BF24 /* URLSession.swift */,
 				F0B2636526345C1E0027910C /* NumberFormatter.swift */,
+				F091C0F22636FCAE00053BA3 /* DateFormatter.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -271,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				F0B124612632AF6F00C9BF24 /* CustomError.swift */,
+				F0D1AAFE2636BC4600740AA0 /* DecoderConfigurationError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -326,6 +366,8 @@
 			dependencies = (
 			);
 			name = "CryptoCombine (iOS)";
+			packageProductDependencies = (
+			);
 			productName = "CryptoCombine (iOS)";
 			productReference = F0B123C62631EBDA00C9BF24 /* CryptoCombine.app */;
 			productType = "com.apple.product-type.application";
@@ -417,6 +459,8 @@
 				Base,
 			);
 			mainGroup = F0B123B62631EBD700C9BF24;
+			packageReferences = (
+			);
 			productRefGroup = F0B123C72631EBDA00C9BF24 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -468,13 +512,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F091C0F32636FCAE00053BA3 /* DateFormatter.swift in Sources */,
 				F0B1242F2632005E00C9BF24 /* Publisher.swift in Sources */,
 				F0B123EA2631EBDA00C9BF24 /* CryptoCombineApp.swift in Sources */,
+				F01106902636AEFC001319B0 /* Status.swift in Sources */,
 				F0D38322263403C400F5AAFA /* Application.swift in Sources */,
 				F0B2636626345C1E0027910C /* NumberFormatter.swift in Sources */,
+				F091C10A2636FDC300053BA3 /* Mock.swift in Sources */,
 				F05111F92633030500537630 /* Pasteboard.swift in Sources */,
 				F0B1244B2632A94400C9BF24 /* Published.swift in Sources */,
 				F0B124752632F19700C9BF24 /* CoinsListView.swift in Sources */,
+				F01106982636B0B1001319B0 /* CodingUserInfoKey.swift in Sources */,
 				F0B124092631EC3400C9BF24 /* ContentView.swift in Sources */,
 				F0B1243726320C1300C9BF24 /* Store.swift in Sources */,
 				F0D3831B263333A000F5AAFA /* ExtraCoinInfo.swift in Sources */,
@@ -483,9 +531,11 @@
 				F0B124622632AF6F00C9BF24 /* CustomError.swift in Sources */,
 				F0B124802632F30400C9BF24 /* CoinRowView.swift in Sources */,
 				F0B123E82631EBDA00C9BF24 /* CryptoCombine.xcdatamodeld in Sources */,
+				F0D1AAFF2636BC4600740AA0 /* DecoderConfigurationError.swift in Sources */,
 				F0B123EC2631EBDA00C9BF24 /* CloudKitView.swift in Sources */,
 				F0B1246D2632CEC000C9BF24 /* CoinInfo.swift in Sources */,
 				F0B2635F26345B040027910C /* PercentesView.swift in Sources */,
+				F01106852636ADF1001319B0 /* Coins.swift in Sources */,
 				F0B124202631F28400C9BF24 /* CoinsInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,13 +544,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F091C0F42636FCAE00053BA3 /* DateFormatter.swift in Sources */,
 				F0B124302632005E00C9BF24 /* Publisher.swift in Sources */,
 				F0B123EB2631EBDA00C9BF24 /* CryptoCombineApp.swift in Sources */,
+				F01106912636AEFC001319B0 /* Status.swift in Sources */,
 				F0D38323263403C400F5AAFA /* Application.swift in Sources */,
 				F0B2636726345C1E0027910C /* NumberFormatter.swift in Sources */,
+				F091C10B2636FDC300053BA3 /* Mock.swift in Sources */,
 				F05111FA2633030500537630 /* Pasteboard.swift in Sources */,
 				F0B1244C2632A94400C9BF24 /* Published.swift in Sources */,
 				F0B124762632F19700C9BF24 /* CoinsListView.swift in Sources */,
+				F01106992636B0B1001319B0 /* CodingUserInfoKey.swift in Sources */,
 				F0B1240A2631EC3400C9BF24 /* ContentView.swift in Sources */,
 				F0B1243826320C1300C9BF24 /* Store.swift in Sources */,
 				F0D3831C263333A000F5AAFA /* ExtraCoinInfo.swift in Sources */,
@@ -509,9 +563,11 @@
 				F0B124632632AF6F00C9BF24 /* CustomError.swift in Sources */,
 				F0B124812632F30400C9BF24 /* CoinRowView.swift in Sources */,
 				F0B123E92631EBDA00C9BF24 /* CryptoCombine.xcdatamodeld in Sources */,
+				F0D1AB002636BC4600740AA0 /* DecoderConfigurationError.swift in Sources */,
 				F0B123ED2631EBDA00C9BF24 /* CloudKitView.swift in Sources */,
 				F0B1246E2632CEC000C9BF24 /* CoinInfo.swift in Sources */,
 				F0B2636026345B040027910C /* PercentesView.swift in Sources */,
+				F01106862636ADF1001319B0 /* Coins.swift in Sources */,
 				F0B124212631F28400C9BF24 /* CoinsInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
