@@ -9,7 +9,7 @@ import CoreData
 
 class Coins: NSManagedObject, Codable {
     enum CodingKeys: CodingKey {
-        case status
+        case status, data
     }
     
     required convenience init(from decoder: Decoder) throws {
@@ -22,9 +22,10 @@ class Coins: NSManagedObject, Codable {
         
         self.init(context: context)
 
-        let statusContainer = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        status = try statusContainer.decode(Coins_Status.self, forKey: .status)
+        status = try container.decode(Coins_Status.self, forKey: .status)
+        data = try container.decode(Set<Coins_Data>.self, forKey: .data) as NSSet
     }
     
     func encode(to encoder: Encoder) throws {
@@ -38,7 +39,7 @@ extension Coins {
     static let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
+//        decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         return decoder
     }()

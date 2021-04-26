@@ -9,9 +9,8 @@ import CoreData
 
 
 class Coins_Status: NSManagedObject, Codable {
-    enum CodingKeys: CodingKey {
-        case totalCount
-        case timestamp
+    enum CodingKeys: String, CodingKey {
+        case totalCount = "total_count", timestamp
     }
 
     required convenience init(from decoder: Decoder) throws {

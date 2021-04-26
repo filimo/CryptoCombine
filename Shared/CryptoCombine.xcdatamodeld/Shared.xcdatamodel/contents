@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Coins" representedClassName=".Coins" syncable="YES" codeGenerationType="category">
+        <relationship name="data" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Data" inverseName="coins" inverseEntity="Data"/>
         <relationship name="status" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="status" inverseEntity="Status"/>
+    </entity>
+    <entity name="Data" representedClassName=".Coins_Data" syncable="YES" codeGenerationType="category">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="coins" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coins" inverseName="data" inverseEntity="Coins"/>
+        <relationship name="quote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quote" inverseName="data" inverseEntity="Quote"/>
+    </entity>
+    <entity name="Info" representedClassName=".Coins_Data_Quote_Info" syncable="YES" codeGenerationType="category">
+        <attribute name="percentChange1h" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="percentChange7d" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="percentChange24h" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="percentChange30d" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="percentChange60d" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="percentChange90d" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="volume24h" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="quote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quote" inverseName="info" inverseEntity="Quote"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Quote" representedClassName=".Coins_Data_Quote" syncable="YES" codeGenerationType="category">
+        <relationship name="data" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Data" inverseName="quote" inverseEntity="Data"/>
+        <relationship name="info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Info" inverseName="quote" inverseEntity="Info"/>
     </entity>
     <entity name="Status" representedClassName=".Coins_Status" syncable="YES" codeGenerationType="category">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -12,8 +33,11 @@
         <relationship name="status" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coins" inverseName="status" inverseEntity="Coins"/>
     </entity>
     <elements>
-        <element name="Coins" positionX="132.7626953125" positionY="-72.6617431640625" width="128" height="58"/>
-        <element name="Item" positionX="-178.81884765625" positionY="-284.3771209716797" width="128" height="44"/>
-        <element name="Status" positionX="-55.26611328125" positionY="-170.5430755615234" width="128" height="88"/>
+        <element name="Coins" positionX="-123.469482421875" positionY="-148.5952453613281" width="128" height="73"/>
+        <element name="Item" positionX="-308.942626953125" positionY="218.8144073486328" width="128" height="44"/>
+        <element name="Status" positionX="-300.224365234375" positionY="-214.9352569580078" width="128" height="88"/>
+        <element name="Data" positionX="50.01220703125" positionY="-79.51181030273438" width="128" height="88"/>
+        <element name="Quote" positionX="-162.6318359375" positionY="-7.452728271484375" width="128" height="73"/>
+        <element name="Info" positionX="9.98583984375" positionY="76.41241455078125" width="128" height="178"/>
     </elements>
 </model>
