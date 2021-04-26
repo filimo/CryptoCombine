@@ -36,3 +36,10 @@ class Status: NSManagedObject, Codable {
         
     }
 }
+
+extension Status {
+    static let removeAllRequest: NSBatchDeleteRequest = {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Status")
+        return NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    }()
+}

@@ -15,7 +15,8 @@ class Coins: NSManagedObject, Codable {
     required convenience init(from decoder: Decoder) throws {
         guard
             let managedObjectContext = decoder.userInfo[CodingUserInfoKey.managedObjectContext],
-            let context = managedObjectContext as? NSManagedObjectContext else {
+            let context = managedObjectContext as? NSManagedObjectContext
+        else {
             throw DecoderConfigurationError.missingManagedObjectContext
         }
         
@@ -40,5 +41,10 @@ extension Coins {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         return decoder
+    }()
+    
+    static let removeAllRequest: NSBatchDeleteRequest = {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Coins")
+        return NSBatchDeleteRequest(fetchRequest: fetchRequest)
     }()
 }
