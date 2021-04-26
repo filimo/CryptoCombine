@@ -94,11 +94,10 @@ struct ContentView: View {
     }
 
     func requestToCoinMarketCap() {
-//        URLSession.shared
+//        coinsBtcCanellable = URLSession.shared
 //            .dataTaskPublisher(for: Store.shared.requestCoinsInfo(convert: "BTC"))
-        //        .replaceError(with: Coins())
 //            .map(\.data)
-        coinsBtcCanellable = Just(Mock.results)
+        coinsBtcCanellable = Just(Coins.mock)
             .eraseToAnyPublisher()
             .sink(
                 receiveCompletion: { error in
