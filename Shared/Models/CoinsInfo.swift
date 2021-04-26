@@ -5,12 +5,12 @@
 //  Created by Viktor Kushnerov on 22.04.21.
 //
 
-struct CoinsToBtcInfo: Codable {
+struct CoinsInfo: Codable {
     let status: Status
     var data: [CoinInfo] = []
 }
 
-extension CoinsToBtcInfo {
+extension CoinsInfo {
     struct Status: Codable {
         let total_count: Int
         let error_code: Int
@@ -18,7 +18,7 @@ extension CoinsToBtcInfo {
     }
 }
 
-extension CoinsToBtcInfo {
+extension CoinsInfo {
     mutating func sortedByName() {
         data = data.sorted { a, b in
             a.name < b.name
@@ -26,4 +26,4 @@ extension CoinsToBtcInfo {
     }
 }
 
-typealias CoinsToBtcInfoResult = Result<CoinsToBtcInfo, Error>
+typealias CoinsToBtcInfoResult = Result<CoinsInfo, Error>

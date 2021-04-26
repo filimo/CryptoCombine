@@ -11,7 +11,7 @@ struct CoinsListView: View {
     @ObservedObject var store = Store.shared
     
     private var items: [CoinInfo] {
-        guard let data = store.coinToBTCInfo?.data else { return [] }
+        guard let data = store.coinsInfo?.data else { return [] }
         
         return data.sorted { a, b in
             a.quoteBTC.percent_change_90d > b.quoteBTC.percent_change_90d

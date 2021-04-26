@@ -11,14 +11,14 @@ class Store: ObservableObject {
     private init() {}
     static let shared = Store()
 
-    typealias Output = Result<CoinsToBtcInfo, Error>
+    typealias Output = Result<CoinsInfo, Error>
 
     @Published private(set) var coinToBTCInfoPublisher = Output.failure(CustomError.empty)
     @Published private(set) var coinToUSDInfoPublisher = Output.failure(CustomError.empty)
 
     @Published var coinNameFilter = ""
 
-    @Published var coinToBTCInfo: CoinsToBtcInfo? = nil
+    @Published var coinsInfo: CoinsInfo? = nil
     
     @Published(key: "extraCoinInfoList") var extraCoinInfoList: ExtraCoinInfoList = [:]
 

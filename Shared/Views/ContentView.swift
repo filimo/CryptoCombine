@@ -20,7 +20,7 @@ struct ContentView: View {
     }
 
     init() {
-//        store.coinToBTCInfo?.data = [] //for tests
+//        store.coinsInfo?.data = [] //for tests
     }
 
     var body: some View {
@@ -66,7 +66,7 @@ struct ContentView: View {
                         coinsBTCInfo.data[btcIndex].quote["USD"] = coinUSDInfo.data[usdIndex].quoteUSD
                     }
                 }
-                store.coinToBTCInfo = coinsBTCInfo
+                store.coinsInfo = coinsBTCInfo
             }
         })
     }
@@ -75,12 +75,12 @@ struct ContentView: View {
     private var coinsStatusView: some View {
         switch store.coinToBTCInfoPublisher {
         case .success:
-            Text("\(store.coinToBTCInfo?.status.total_count ?? 0)")
+            Text("\(store.coinsInfo?.status.total_count ?? 0)")
         case let .failure(error):
             if let error = error as? CustomError,
                error == .empty
             {
-                Text("\(store.coinToBTCInfo?.status.total_count ?? 0)")
+                Text("\(store.coinsInfo?.status.total_count ?? 0)")
             } else {
                 Text("\(error.localizedDescription)")
             }
