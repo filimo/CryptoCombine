@@ -6,14 +6,14 @@
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="Status" representedClassName=".Status" syncable="YES" codeGenerationType="category">
+    <entity name="Status" representedClassName=".Coins_Status" syncable="YES" codeGenerationType="category">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="totalCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="status" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coins" inverseName="status" inverseEntity="Coins"/>
     </entity>
     <elements>
         <element name="Coins" positionX="132.7626953125" positionY="-72.6617431640625" width="128" height="58"/>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="Item" positionX="-178.81884765625" positionY="-284.3771209716797" width="128" height="44"/>
         <element name="Status" positionX="-55.26611328125" positionY="-170.5430755615234" width="128" height="88"/>
     </elements>
 </model>

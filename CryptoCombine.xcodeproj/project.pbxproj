@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		F01106852636ADF1001319B0 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01106842636ADF1001319B0 /* Coins.swift */; };
 		F01106862636ADF1001319B0 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01106842636ADF1001319B0 /* Coins.swift */; };
-		F01106902636AEFC001319B0 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011068F2636AEFC001319B0 /* Status.swift */; };
-		F01106912636AEFC001319B0 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011068F2636AEFC001319B0 /* Status.swift */; };
+		F01106902636AEFC001319B0 /* Coins_Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011068F2636AEFC001319B0 /* Coins_Status.swift */; };
+		F01106912636AEFC001319B0 /* Coins_Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011068F2636AEFC001319B0 /* Coins_Status.swift */; };
 		F01106982636B0B1001319B0 /* CodingUserInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01106972636B0B1001319B0 /* CodingUserInfoKey.swift */; };
 		F01106992636B0B1001319B0 /* CodingUserInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01106972636B0B1001319B0 /* CodingUserInfoKey.swift */; };
 		F05111F92633030500537630 /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05111F82633030500537630 /* Pasteboard.swift */; };
@@ -83,7 +83,7 @@
 
 /* Begin PBXFileReference section */
 		F01106842636ADF1001319B0 /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
-		F011068F2636AEFC001319B0 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		F011068F2636AEFC001319B0 /* Coins_Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins_Status.swift; sourceTree = "<group>"; };
 		F01106972636B0B1001319B0 /* CodingUserInfoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingUserInfoKey.swift; sourceTree = "<group>"; };
 		F05111F82633030500537630 /* Pasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
 		F091C0F22636FCAE00053BA3 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				F01106842636ADF1001319B0 /* Coins.swift */,
-				F011068F2636AEFC001319B0 /* Status.swift */,
+				F011068F2636AEFC001319B0 /* Coins_Status.swift */,
 				F0B1241F2631F28400C9BF24 /* CoinsInfo.swift */,
 				F0B1246C2632CEC000C9BF24 /* CoinInfo.swift */,
 				F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */,
@@ -515,7 +515,7 @@
 				F091C0F32636FCAE00053BA3 /* DateFormatter.swift in Sources */,
 				F0B1242F2632005E00C9BF24 /* Publisher.swift in Sources */,
 				F0B123EA2631EBDA00C9BF24 /* CryptoCombineApp.swift in Sources */,
-				F01106902636AEFC001319B0 /* Status.swift in Sources */,
+				F01106902636AEFC001319B0 /* Coins_Status.swift in Sources */,
 				F0D38322263403C400F5AAFA /* Application.swift in Sources */,
 				F0B2636626345C1E0027910C /* NumberFormatter.swift in Sources */,
 				F091C10A2636FDC300053BA3 /* Mock.swift in Sources */,
@@ -547,7 +547,7 @@
 				F091C0F42636FCAE00053BA3 /* DateFormatter.swift in Sources */,
 				F0B124302632005E00C9BF24 /* Publisher.swift in Sources */,
 				F0B123EB2631EBDA00C9BF24 /* CryptoCombineApp.swift in Sources */,
-				F01106912636AEFC001319B0 /* Status.swift in Sources */,
+				F01106912636AEFC001319B0 /* Coins_Status.swift in Sources */,
 				F0D38323263403C400F5AAFA /* Application.swift in Sources */,
 				F0B2636726345C1E0027910C /* NumberFormatter.swift in Sources */,
 				F091C10B2636FDC300053BA3 /* Mock.swift in Sources */,

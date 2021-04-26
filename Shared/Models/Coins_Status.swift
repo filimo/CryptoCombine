@@ -1,5 +1,5 @@
 //
-//  Status.swift
+//  Coins_Status.swift
 //  CryptoCombine
 //
 //  Created by Viktor Kushnerov on 26.04.21.
@@ -8,7 +8,7 @@
 import CoreData
 
 
-class Status: NSManagedObject, Codable {
+class Coins_Status: NSManagedObject, Codable {
     enum CodingKeys: CodingKey {
         case totalCount
         case timestamp
@@ -37,7 +37,7 @@ class Status: NSManagedObject, Codable {
     }
 }
 
-extension Status {
+extension Coins_Status {
     static let removeAllRequest: NSBatchDeleteRequest = {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Status")
         return NSBatchDeleteRequest(fetchRequest: fetchRequest)

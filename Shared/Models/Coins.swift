@@ -24,7 +24,7 @@ class Coins: NSManagedObject, Codable {
 
         let statusContainer = try decoder.container(keyedBy: CodingKeys.self)
         
-        status = try statusContainer.decode(Status.self, forKey: .status)
+        status = try statusContainer.decode(Coins_Status.self, forKey: .status)
     }
     
     func encode(to encoder: Encoder) throws {

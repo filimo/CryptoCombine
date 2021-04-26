@@ -106,7 +106,7 @@ struct ContentView: View {
                 receiveValue: { data in
                     do {
                         try viewContext.execute(Coins.removeAllRequest)
-                        try viewContext.execute(Status.removeAllRequest)
+                        try viewContext.execute(Coins_Status.removeAllRequest)
 
                         Coins.decoder.userInfo[.managedObjectContext] = viewContext
                         _ = try Coins.decoder.decode(Coins.self, from: data)
