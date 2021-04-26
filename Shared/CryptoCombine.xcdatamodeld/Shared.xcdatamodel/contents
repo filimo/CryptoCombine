@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Coins" representedClassName=".Coins" syncable="YES" codeGenerationType="category">
-        <relationship name="data" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Data" inverseName="coins" inverseEntity="Data"/>
-        <relationship name="status" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="status" inverseEntity="Status"/>
+        <relationship name="data" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Data" inverseName="coins" inverseEntity="Data"/>
+        <relationship name="status" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Status" inverseName="status" inverseEntity="Status"/>
     </entity>
     <entity name="Data" representedClassName=".Coins_Data" syncable="YES" codeGenerationType="category">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="coins" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coins" inverseName="data" inverseEntity="Coins"/>
-        <relationship name="quote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quote" inverseName="data" inverseEntity="Quote"/>
+        <relationship name="quote" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Quote" inverseName="data" inverseEntity="Quote"/>
     </entity>
     <entity name="Info" representedClassName=".Coins_Data_Quote_Info" syncable="YES" codeGenerationType="category">
         <attribute name="percentChange1h" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -25,7 +25,7 @@
     </entity>
     <entity name="Quote" representedClassName=".Coins_Data_Quote" syncable="YES" codeGenerationType="category">
         <relationship name="data" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Data" inverseName="quote" inverseEntity="Data"/>
-        <relationship name="info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Info" inverseName="quote" inverseEntity="Info"/>
+        <relationship name="info" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Info" inverseName="quote" inverseEntity="Info"/>
     </entity>
     <entity name="Status" representedClassName=".Coins_Status" syncable="YES" codeGenerationType="category">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
