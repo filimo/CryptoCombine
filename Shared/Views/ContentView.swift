@@ -9,8 +9,6 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
     @ObservedObject var store = Store.shared
 
 //    private var responsePublisher:
@@ -20,8 +18,9 @@ struct ContentView: View {
 //            store.$coinToUSDInfoPublisher)
 //            .eraseToAnyPublisher()
 //    }
-
-    @State var coinsCanellable: AnyCancellable?
+    
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Coins_Data_Quote_Info.quote?.data?.id, ascending: true)], animation: .default)
+    private var items: FetchedResults<Coins_Data_Quote_Info>
 
     init() {
 //        store.coinsInfo?.data = [] //for tests
@@ -37,7 +36,7 @@ struct ContentView: View {
                 Button("Refresh") {
 //                    store.refreshCoinsInfo(convert: "BTC")
 //                    store.refreshCoinsInfo(convert: "USD")
-                    requestToCoinMarketCap()
+                    store.requestToCoinMarketCap()
                 }
 
                 coinsStatusView
@@ -91,48 +90,7 @@ struct ContentView: View {
                 Text("\(error.localizedDescription)")
             }
         }
-    }
-
-    func latestPublisher(convert: String) -> AnyPublisher<Data, URLSession.DataTaskPublisher.Failure> {
-        URLSession.shared
-            .dataTaskPublisher(for: Store.shared.requestCoinsInfo(convert: "BTC"))
-            .map(\.data)
-            .eraseToAnyPublisher()
-    }
-    
-    func latestRealPublisher() -> AnyPublisher<(Data, Data), URLSession.DataTaskPublisher.Failure>   {
-        Publishers.CombineLatest(latestPublisher(convert: "BTC"), latestPublisher(convert: "USD"))
-            .eraseToAnyPublisher()
-    }
-    
-    func latestMockPublisher() -> AnyPublisher<(Data, Data), Just<Data>.Failure> {
-        Publishers.CombineLatest(Just(Coins.btcMock), Just(Coins.usdMock))
-            .eraseToAnyPublisher()
-    }
-
-    func requestToCoinMarketCap() {
-        coinsCanellable =
-//            latestRealPublisher()
-            latestMockPublisher()
-                .sink(
-                    receiveCompletion: { error in
-                        print(error)
-                    },
-                    receiveValue: { btcData, usdData in
-                        do {
-                            try viewContext.execute(Coins.removeAllRequest)
-
-                            Coins.decoder.userInfo[.managedObjectContext] = viewContext
-
-                            _ = try Coins.decoder.decode(Coins.self, from: btcData)
-                            _ = try Coins.decoder.decode(Coins.self, from: usdData)
-
-                            try viewContext.save()
-                        } catch {
-                            print(error)
-                        }
-                    })
-    }
+    }  
 }
 
 struct ContentView_Previews: PreviewProvider {

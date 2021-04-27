@@ -5,31 +5,49 @@
 //  Created by Viktor Kushnerov on 22.04.21.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct CloudKitView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
+    @ObservedObject var store = Store.shared
+
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Coins.status?.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Coins_Data_Quote_Info.quote?.data?.id, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Coins>
+    private var items: FetchedResults<Coins_Data_Quote_Info>
 
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.status?.timestamp ?? Date(), formatter: itemFormatter)")
+        VStack {
+            HStack {
+                Button("Refresh") {
+                    store.requestToCoinMarketCap()
+                }
+                Button("Clear") {
+                    store.removeAllCoins()
+                }
             }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
 
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
+            List {
+                ForEach(items) { item in
+//                Text("Item at \(item.timestamp ?? Date(), formatter: itemFormatter)")
+                    HStack {
+                        Text(item.quote?.data?.name ?? "")
+                        Text(item.convert ?? "")
+                        Text("\(item.price)")
+                    }
+                }
+                .onDelete(perform: deleteItems)
+            }
+            .toolbar {
+                #if os(iOS)
+                EditButton()
+                #endif
+
+                Button(action: addItem) {
+                    Label("Add Item", systemImage: "plus")
+                }
             }
         }
     }
@@ -64,7 +82,7 @@ struct CloudKitView: View {
             }
         }
     }
-    
+
     private let itemFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
@@ -72,7 +90,6 @@ struct CloudKitView: View {
         return formatter
     }()
 }
-
 
 struct CloudKitView_Previews: PreviewProvider {
     static var previews: some View {
