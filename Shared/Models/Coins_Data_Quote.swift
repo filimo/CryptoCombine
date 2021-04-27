@@ -10,6 +10,7 @@ import CoreData
 class Coins_Data_Quote: NSManagedObject, Decodable {
     enum CodingKeys: CodingKey {
         case BTC
+        case USD
     }
 
     required convenience init(from decoder: Decoder) throws {
@@ -18,9 +19,14 @@ class Coins_Data_Quote: NSManagedObject, Decodable {
         }
 
         self.init(context: context)
-        
+
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.info = try container.decode(Coins_Data_Quote_Info.self, forKey: .BTC)
+
+        if container.contains(.BTC) {
+            self.info = try container.decode(Coins_Data_Quote_Info.self, forKey: .BTC)
+        }
+        if container.contains(.USD) {
+            self.info = try container.decode(Coins_Data_Quote_Info.self, forKey: .USD)
+        }
     }
 }

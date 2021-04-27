@@ -13,15 +13,15 @@ struct ContentView: View {
 
     @ObservedObject var store = Store.shared
 
-    private var responsePublisher:
-        AnyPublisher<(CoinsToBtcInfoResult, CoinsToBtcInfoResult), Never> {
-        Publishers.CombineLatest(
-            store.$coinToBTCInfoPublisher,
-            store.$coinToUSDInfoPublisher)
-            .eraseToAnyPublisher()
-    }
+//    private var responsePublisher:
+//        AnyPublisher<(CoinsToBtcInfoResult, CoinsToBtcInfoResult), Never> {
+//        Publishers.CombineLatest(
+//            store.$coinToBTCInfoPublisher,
+//            store.$coinToUSDInfoPublisher)
+//            .eraseToAnyPublisher()
+//    }
 
-    @State var coinsBtcCanellable: AnyCancellable?
+    @State var coinsCanellable: AnyCancellable?
 
     init() {
 //        store.coinsInfo?.data = [] //for tests
@@ -93,28 +93,45 @@ struct ContentView: View {
         }
     }
 
-    func requestToCoinMarketCap() {
-//        coinsBtcCanellable = URLSession.shared
-//            .dataTaskPublisher(for: Store.shared.requestCoinsInfo(convert: "BTC"))
-//            .map(\.data)
-        coinsBtcCanellable = Just(Coins.mock)
+    func latestPublisher(convert: String) -> AnyPublisher<Data, URLSession.DataTaskPublisher.Failure> {
+        URLSession.shared
+            .dataTaskPublisher(for: Store.shared.requestCoinsInfo(convert: "BTC"))
+            .map(\.data)
             .eraseToAnyPublisher()
-            .sink(
-                receiveCompletion: { error in
-                    print(error)
-                },
-                receiveValue: { data in
-                    do {
-                        try viewContext.execute(Coins.removeAllRequest)
+    }
+    
+    func latestRealPublisher() -> AnyPublisher<(Data, Data), URLSession.DataTaskPublisher.Failure>   {
+        Publishers.CombineLatest(latestPublisher(convert: "BTC"), latestPublisher(convert: "USD"))
+            .eraseToAnyPublisher()
+    }
+    
+    func latestMockPublisher() -> AnyPublisher<(Data, Data), Just<Data>.Failure> {
+        Publishers.CombineLatest(Just(Coins.btcMock), Just(Coins.usdMock))
+            .eraseToAnyPublisher()
+    }
 
-                        Coins.decoder.userInfo[.managedObjectContext] = viewContext
-                        _ = try Coins.decoder.decode(Coins.self, from: data)
-
-                        try viewContext.save()
-                    } catch {
+    func requestToCoinMarketCap() {
+        coinsCanellable =
+//            latestRealPublisher()
+            latestMockPublisher()
+                .sink(
+                    receiveCompletion: { error in
                         print(error)
-                    }
-                })
+                    },
+                    receiveValue: { btcData, usdData in
+                        do {
+                            try viewContext.execute(Coins.removeAllRequest)
+
+                            Coins.decoder.userInfo[.managedObjectContext] = viewContext
+
+                            _ = try Coins.decoder.decode(Coins.self, from: btcData)
+                            _ = try Coins.decoder.decode(Coins.self, from: usdData)
+
+                            try viewContext.save()
+                        } catch {
+                            print(error)
+                        }
+                    })
     }
 }
 
