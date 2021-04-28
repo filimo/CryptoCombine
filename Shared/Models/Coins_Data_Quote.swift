@@ -27,7 +27,6 @@ class Coins_Data_Quote: NSManagedObject, Decodable {
             self.info?.convert = "BTC"
         }
         if container.contains(.USD) {
-            self.info = try container.decode(Coins_Data_Quote_Info.self, forKey: .USD)
             self.info?.convert = "USD"
         }
     }

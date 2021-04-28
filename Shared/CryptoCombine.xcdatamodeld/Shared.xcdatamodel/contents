@@ -14,6 +14,7 @@
     </entity>
     <entity name="Info" representedClassName=".Coins_Data_Quote_Info" syncable="YES" codeGenerationType="category">
         <attribute name="convert" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="percentChange1h" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="percentChange7d" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
         <attribute name="percentChange24h" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -23,6 +24,11 @@
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="volume24h" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="quote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quote" inverseName="info" inverseEntity="Quote"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -39,7 +45,7 @@
     <elements>
         <element name="Coins" positionX="-123.469482421875" positionY="-148.5952453613281" width="128" height="73"/>
         <element name="Data" positionX="50.01220703125" positionY="-79.51181030273438" width="128" height="133"/>
-        <element name="Info" positionX="9.98583984375" positionY="76.41241455078125" width="128" height="193"/>
+        <element name="Info" positionX="9.98583984375" positionY="76.41241455078125" width="128" height="14"/>
         <element name="Item" positionX="-308.942626953125" positionY="218.8144073486328" width="128" height="44"/>
         <element name="Quote" positionX="-162.6318359375" positionY="-7.452728271484375" width="128" height="73"/>
         <element name="Status" positionX="-300.224365234375" positionY="-214.9352569580078" width="128" height="88"/>

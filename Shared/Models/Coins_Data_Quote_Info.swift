@@ -14,7 +14,7 @@ class Coins_Data_Quote_Info: NSManagedObject, Decodable {
         case percentChange7d = "percent_change_7d", percentChange30d = "percent_change_30d"
         case percentChange60d = "percent_change_60d", percentChange90d = "percent_change_90d"
     }
-
+    
     required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[CodingUserInfoKey.managedObjectContext] as? NSManagedObjectContext else {
             throw DecoderConfigurationError.missingManagedObjectContext

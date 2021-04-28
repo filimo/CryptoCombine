@@ -13,14 +13,7 @@ class Coins: NSManagedObject, Codable {
     }
     
     required convenience init(from decoder: Decoder) throws {
-        guard
-            let managedObjectContext = decoder.userInfo[CodingUserInfoKey.managedObjectContext],
-            let context = managedObjectContext as? NSManagedObjectContext
-        else {
-            throw DecoderConfigurationError.missingManagedObjectContext
-        }
-        
-        self.init(context: context)
+        self.init(context: PersistenceController.shared.viewContext)
 
         let container = try decoder.container(keyedBy: CodingKeys.self)
         

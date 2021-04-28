@@ -29,5 +29,7 @@ class Coins_Data: NSManagedObject, Decodable {
         self.slug = try container.decode(String.self, forKey: .slug)
 
         self.quote = try container.decode(Coins_Data_Quote.self, forKey: .quote)
+        
+        self.quote?.info?.id = "\(id)-\(self.quote!.info!.convert!)"
     }
 }

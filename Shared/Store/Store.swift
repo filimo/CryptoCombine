@@ -21,9 +21,9 @@ class Store: ObservableObject {
 
     @Published var coinsInfo: CoinsInfo? = nil
 
-    @Published(key: "extraCoinInfoList") var extraCoinInfoList: ExtraCoinInfoList = [:]
+    @Published var extraCoinInfoList: ExtraCoinInfoList = [:]
 
-    @Published(key: "onlyFavoritedCoins") var onlyFavoritedCoins = false
+    @Published var onlyFavoritedCoins = false
     @Published(key: "CMC_PRO_API_KEY") var CMC_PRO_API_KEY = ""
 
     private var coinsCanellable: AnyCancellable?
@@ -76,7 +76,9 @@ class Store: ObservableObject {
                 .assign(to: &$coinToBTCInfoPublisher)
         }
     }
+}
 
+extension Store {
     private func latestPublisher(convert: String) -> AnyPublisher<Data, URLSession.DataTaskPublisher.Failure> {
         URLSession.shared
             .dataTaskPublisher(for: Store.shared.requestCoinsInfo(convert: "BTC"))
@@ -113,7 +115,8 @@ class Store: ObservableObject {
 
                         try self.viewContext.save()
                     } catch {
-                        print(error)
+                        let nserror = error as NSError
+                        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
                     }
                 })
     }

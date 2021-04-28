@@ -13,9 +13,7 @@ struct CloudKitView: View {
 
     @ObservedObject var store = Store.shared
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Coins_Data_Quote_Info.quote?.data?.id, ascending: true)],
-        animation: .default)
+    @FetchRequest(entity: Coins_Data_Quote_Info.entity(), sortDescriptors: [])
     private var items: FetchedResults<Coins_Data_Quote_Info>
 
     var body: some View {
@@ -30,9 +28,10 @@ struct CloudKitView: View {
             }
 
             List {
-                ForEach(items) { item in
+                ForEach(items, id: \.id) { item in
 //                Text("Item at \(item.timestamp ?? Date(), formatter: itemFormatter)")
                     HStack {
+                        Text(item.id ?? "")
                         Text(item.quote?.data?.name ?? "")
                         Text(item.convert ?? "")
                         Text("\(item.price)")

@@ -61,6 +61,8 @@
 		F0B2636026345B040027910C /* PercentesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2635E26345B040027910C /* PercentesView.swift */; };
 		F0B2636626345C1E0027910C /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2636526345C1E0027910C /* NumberFormatter.swift */; };
 		F0B2636726345C1E0027910C /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2636526345C1E0027910C /* NumberFormatter.swift */; };
+		F0BAEA9126388F7B00696AAA /* CloudKitTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BAEA9026388F7B00696AAA /* CloudKitTestView.swift */; };
+		F0BAEA9226388F7B00696AAA /* CloudKitTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BAEA9026388F7B00696AAA /* CloudKitTestView.swift */; };
 		F0CB8BC32634675A005A044C /* Release_macOS_1.0_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = F0CB8BC22634675A005A044C /* Release_macOS_1.0_0001.png */; };
 		F0D1AAFF2636BC4600740AA0 /* DecoderConfigurationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1AAFE2636BC4600740AA0 /* DecoderConfigurationError.swift */; };
 		F0D1AB002636BC4600740AA0 /* DecoderConfigurationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1AAFE2636BC4600740AA0 /* DecoderConfigurationError.swift */; };
@@ -125,6 +127,7 @@
 		F0B1247F2632F30400C9BF24 /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		F0B2635E26345B040027910C /* PercentesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentesView.swift; sourceTree = "<group>"; };
 		F0B2636526345C1E0027910C /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		F0BAEA9026388F7B00696AAA /* CloudKitTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitTestView.swift; sourceTree = "<group>"; };
 		F0CB8BC22634675A005A044C /* Release_macOS_1.0_0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Release_macOS_1.0_0001.png; sourceTree = "<group>"; };
 		F0D1AAFE2636BC4600740AA0 /* DecoderConfigurationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderConfigurationError.swift; sourceTree = "<group>"; };
 		F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraCoinInfo.swift; sourceTree = "<group>"; };
@@ -332,6 +335,7 @@
 			children = (
 				F0DE40092632FD7F0035C42B /* CoinsListView */,
 				F0B123BF2631EBD700C9BF24 /* CloudKitView.swift */,
+				F0BAEA9026388F7B00696AAA /* CloudKitTestView.swift */,
 				F0B124082631EC3400C9BF24 /* ContentView.swift */,
 			);
 			path = Views;
@@ -531,6 +535,7 @@
 				F0D38322263403C400F5AAFA /* Application.swift in Sources */,
 				F0B2636626345C1E0027910C /* NumberFormatter.swift in Sources */,
 				F091C10A2636FDC300053BA3 /* Mock.swift in Sources */,
+				F0BAEA9126388F7B00696AAA /* CloudKitTestView.swift in Sources */,
 				F091C124263736B200053BA3 /* Coins_Data_Quote.swift in Sources */,
 				F05111F92633030500537630 /* Pasteboard.swift in Sources */,
 				F0B1244B2632A94400C9BF24 /* Published.swift in Sources */,
@@ -566,6 +571,7 @@
 				F0D38323263403C400F5AAFA /* Application.swift in Sources */,
 				F0B2636726345C1E0027910C /* NumberFormatter.swift in Sources */,
 				F091C10B2636FDC300053BA3 /* Mock.swift in Sources */,
+				F0BAEA9226388F7B00696AAA /* CloudKitTestView.swift in Sources */,
 				F091C125263736B200053BA3 /* Coins_Data_Quote.swift in Sources */,
 				F05111FA2633030500537630 /* Pasteboard.swift in Sources */,
 				F0B1244C2632A94400C9BF24 /* Published.swift in Sources */,
