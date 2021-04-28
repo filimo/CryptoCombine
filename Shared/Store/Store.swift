@@ -9,7 +9,11 @@ import CoreData
 import Foundation
 
 class Store: ObservableObject {
-    private init() {}
+    private init() {
+        let didSaveNotification = NSManagedObjectContext.didMergeChangesObjectIDsNotification
+           NotificationCenter.default.addObserver(self, selector: #selector(didSave(_:)),
+                                                   name: didSaveNotification, object: nil)
+    }
     static let shared = Store()
 
     typealias Output = Result<CoinsInfo, Error>
@@ -75,6 +79,12 @@ class Store: ObservableObject {
                 .receive(on: DispatchQueue.main)
                 .assign(to: &$coinToBTCInfoPublisher)
         }
+    }
+    
+    @objc func didSave(_ notification: Notification) {
+      // handle the save notification
+      let insertedObjectsKey = NSManagedObjectContext.NotificationKey.insertedObjects.rawValue
+      print(notification.userInfo?[insertedObjectsKey])
     }
 }
 

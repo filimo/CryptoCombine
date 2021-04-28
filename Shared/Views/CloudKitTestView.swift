@@ -15,38 +15,39 @@ struct CloudKitTestView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-    
+
     @ObservedObject var store = Store.shared
-    
+
     var body: some View {
-        VStack {
-            Button("Remove all") {
-                let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Item.fetchRequest()
-                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
-                PersistenceController.shared.execute(deleteRequest)
-            }
-            Button("Update") {
-                let request = NSBatchUpdateRequest(entity: Item.entity())
-                
-                request.propertiesToUpdate = ["timestamp": Date()]
-                
-                PersistenceController.shared.execute(request)
-            }
-
-            List {
-                ForEach(items) { item in
-                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                #if os(iOS)
-                EditButton()
-                #endif
-
+        NavigationView {
+            VStack {
                 Button(action: addItem) {
                     Label("Add Item", systemImage: "plus")
+                }
+                Button("Remove all") {
+                    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Item.fetchRequest()
+                    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+                    PersistenceController.shared.execute(deleteRequest)
+                }
+                Button("Update") {
+                    let request = NSBatchUpdateRequest(entity: Item.entity())
+
+                    request.propertiesToUpdate = ["timestamp": Date()]
+
+                    PersistenceController.shared.execute(request)
+                }
+
+                List {
+                    ForEach(items) { item in
+                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                    }
+                    .onDelete(perform: deleteItems)
+                }
+                .toolbar {
+                    #if os(iOS)
+                    EditButton()
+                    #endif
                 }
             }
         }

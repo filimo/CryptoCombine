@@ -8,6 +8,8 @@
 import Foundation
 
 #if os(iOS)
+import UIKit
+
 class Application {
     static func openBrowser(url: String) {
         if let url = URL(string: url) {

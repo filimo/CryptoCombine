@@ -63,6 +63,10 @@
 		F0B2636726345C1E0027910C /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2636526345C1E0027910C /* NumberFormatter.swift */; };
 		F0BAEA9126388F7B00696AAA /* CloudKitTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BAEA9026388F7B00696AAA /* CloudKitTestView.swift */; };
 		F0BAEA9226388F7B00696AAA /* CloudKitTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BAEA9026388F7B00696AAA /* CloudKitTestView.swift */; };
+		F0BAEA952639864700696AAA /* usd.json in Resources */ = {isa = PBXBuildFile; fileRef = F0BAEA932639864700696AAA /* usd.json */; };
+		F0BAEA962639864700696AAA /* usd.json in Resources */ = {isa = PBXBuildFile; fileRef = F0BAEA932639864700696AAA /* usd.json */; };
+		F0BAEA972639864700696AAA /* btc.json in Resources */ = {isa = PBXBuildFile; fileRef = F0BAEA942639864700696AAA /* btc.json */; };
+		F0BAEA982639864700696AAA /* btc.json in Resources */ = {isa = PBXBuildFile; fileRef = F0BAEA942639864700696AAA /* btc.json */; };
 		F0CB8BC32634675A005A044C /* Release_macOS_1.0_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = F0CB8BC22634675A005A044C /* Release_macOS_1.0_0001.png */; };
 		F0D1AAFF2636BC4600740AA0 /* DecoderConfigurationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1AAFE2636BC4600740AA0 /* DecoderConfigurationError.swift */; };
 		F0D1AB002636BC4600740AA0 /* DecoderConfigurationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1AAFE2636BC4600740AA0 /* DecoderConfigurationError.swift */; };
@@ -128,6 +132,8 @@
 		F0B2635E26345B040027910C /* PercentesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentesView.swift; sourceTree = "<group>"; };
 		F0B2636526345C1E0027910C /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		F0BAEA9026388F7B00696AAA /* CloudKitTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitTestView.swift; sourceTree = "<group>"; };
+		F0BAEA932639864700696AAA /* usd.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = usd.json; sourceTree = "<group>"; };
+		F0BAEA942639864700696AAA /* btc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = btc.json; sourceTree = "<group>"; };
 		F0CB8BC22634675A005A044C /* Release_macOS_1.0_0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Release_macOS_1.0_0001.png; sourceTree = "<group>"; };
 		F0D1AAFE2636BC4600740AA0 /* DecoderConfigurationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderConfigurationError.swift; sourceTree = "<group>"; };
 		F0D3831A263333A000F5AAFA /* ExtraCoinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraCoinInfo.swift; sourceTree = "<group>"; };
@@ -185,6 +191,8 @@
 		F091C1042636FDA200053BA3 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				F0BAEA942639864700696AAA /* btc.json */,
+				F0BAEA932639864700696AAA /* usd.json */,
 				F091C1092636FDC300053BA3 /* Mock.swift */,
 			);
 			path = Mocks;
@@ -495,7 +503,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0CB8BC32634675A005A044C /* Release_macOS_1.0_0001.png in Resources */,
+				F0BAEA972639864700696AAA /* btc.json in Resources */,
 				F0B123F02631EBDA00C9BF24 /* Assets.xcassets in Resources */,
+				F0BAEA952639864700696AAA /* usd.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,7 +513,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0BAEA962639864700696AAA /* usd.json in Resources */,
 				F0B123F12631EBDA00C9BF24 /* Assets.xcassets in Resources */,
+				F0BAEA982639864700696AAA /* btc.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
