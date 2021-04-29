@@ -4,7 +4,7 @@
 //
 //  Created by Viktor Kushnerov on 22.04.21.
 //
-
+import Combine
 import CoreData
 import SwiftUI
 
@@ -25,17 +25,12 @@ struct CloudKitTestView: View {
                     Label("Add Item", systemImage: "plus")
                 }
                 Button("Remove all") {
-                    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Item.fetchRequest()
-                    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
-                    PersistenceController.shared.execute(deleteRequest)
+                    let fetch: NSFetchRequest<NSFetchRequestResult> = Item.fetchRequest()
+                    
+                    PersistenceController.shared.batchDelete(fetch: fetch)
                 }
                 Button("Update") {
-                    let request = NSBatchUpdateRequest(entity: Item.entity())
-
-                    request.propertiesToUpdate = ["timestamp": Date()]
-
-                    PersistenceController.shared.execute(request)
+                    PersistenceController.shared.batchUpdate(entity: Item.entity())
                 }
 
                 List {

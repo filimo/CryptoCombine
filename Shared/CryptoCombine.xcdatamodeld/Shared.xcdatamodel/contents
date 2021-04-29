@@ -44,10 +44,10 @@
     </entity>
     <elements>
         <element name="Coins" positionX="-123.469482421875" positionY="-148.5952453613281" width="128" height="73"/>
-        <element name="Data" positionX="50.01220703125" positionY="-79.51181030273438" width="128" height="133"/>
-        <element name="Info" positionX="9.98583984375" positionY="76.41241455078125" width="128" height="14"/>
-        <element name="Item" positionX="-308.942626953125" positionY="218.8144073486328" width="128" height="44"/>
-        <element name="Quote" positionX="-162.6318359375" positionY="-7.452728271484375" width="128" height="73"/>
+        <element name="Data" positionX="70.69580078125" positionY="-111.7893524169922" width="128" height="133"/>
+        <element name="Info" positionX="55.650146484375" positionY="64.05441284179688" width="128" height="208"/>
+        <element name="Item" positionX="-254.5126953125" positionY="172.5007476806641" width="128" height="44"/>
+        <element name="Quote" positionX="-272.09423828125" positionY="-41.3751220703125" width="128" height="73"/>
         <element name="Status" positionX="-300.224365234375" positionY="-214.9352569580078" width="128" height="88"/>
     </elements>
 </model>

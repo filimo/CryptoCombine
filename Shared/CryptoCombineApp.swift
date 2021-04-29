@@ -14,8 +14,8 @@ struct CryptoCombineApp: App {
     var body: some Scene {
         WindowGroup {
 //            CloudKitTestView()
-            CloudKitView()
-//            ContentView()
+//            CloudKitView()
+            ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
