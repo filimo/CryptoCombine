@@ -4,7 +4,7 @@
 
 The next version will be emplemented Core Data (Server->CoreData->SwiftUI)
 
-This project was created to show how simple and effective it is to use local storage to optimize the usage. Have a powerful and flexible way for working with data that comes from the server in JSON format. Be able to cache requests from the server. And the ability to save this data to iCloud.
+This project was created to show how simple and effective it is to use local storage to optimize CPU, memoty, bandwidth usage. Have a powerful and flexible way for working with data that comes from the server in JSON format. Be able to cache requests from the server. And the ability to save this data to iCloud.
 Subscribe to keep track of new commits. 
 
 Ideas from these sources:<br>
