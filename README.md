@@ -9,6 +9,7 @@ Subscribe to keep track of new commits.
 
 Ideas from these sources:
 [Optimizing Storage in Your App](https://developer.apple.com/videos/play/wwdc2019/419) 2019
+
 [Core Data: Sundries and maxims](https://developer.apple.com/videos/play/wwdc2020/10017) 2020
 ![](Assets/Diagram1.png)
 
