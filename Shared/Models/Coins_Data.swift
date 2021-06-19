@@ -14,6 +14,14 @@ class Coins_Data: NSManagedObject, Decodable {
         case quote
     }
 
+    enum Quote: CodingKey {
+        case USD, BTC
+    }
+    
+    var ID: String {
+        "\(coinID)-\(id)"
+    }
+
     required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[CodingUserInfoKey.managedObjectContext] as? NSManagedObjectContext else {
             throw DecoderConfigurationError.missingManagedObjectContext
@@ -28,8 +36,27 @@ class Coins_Data: NSManagedObject, Decodable {
         self.symbol = try container.decode(String.self, forKey: .symbol)
         self.slug = try container.decode(String.self, forKey: .slug)
 
-        self.quote = try container.decode(Coins_Data_Quote.self, forKey: .quote)
+        let quoteContainer = try container.nestedContainer(keyedBy: Quote.self, forKey: .quote)
+
+        if let quote = try? quoteContainer.decode(Coins_Data_Quote.self, forKey: .USD) {
+            quote.id = id
+            quote.convert = "USD"
+            self.quote = quote
+        } else if let quote = try? quoteContainer.decode(Coins_Data_Quote.self, forKey: .BTC) {
+            quote.id = id
+            quote.convert = "BTC"
+            self.quote = quote
+        }
+    }
+}
+
+extension Coins_Data {
+    static func fetchRequestLimit(fetchLimit: Int) -> NSFetchRequest<Coins_Data> {
+        let request: NSFetchRequest<Coins_Data> = Coins_Data.fetchRequest()
         
-        self.quote?.info?.id = "\(id)-\(self.quote!.info!.convert!)"
+        request.fetchLimit = fetchLimit
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Coins_Data.coinID, ascending: false)]
+        
+        return request
     }
 }

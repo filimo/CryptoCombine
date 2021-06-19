@@ -11,12 +11,12 @@ import SwiftUI
 struct CloudKitTestView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
     @ObservedObject var store = Store.shared
+    
+    @State var id = UUID()
+
+//    @FetchRequest(fetchRequest: Item.fetchRequestLimit(fetchLimit: 2))
+//    private var items: FetchedResults<Item>
 
     var body: some View {
         NavigationView {
@@ -26,24 +26,20 @@ struct CloudKitTestView: View {
                 }
                 Button("Remove all") {
                     let fetch: NSFetchRequest<NSFetchRequestResult> = Item.fetchRequest()
-                    
+
                     PersistenceController.shared.batchDelete(fetch: fetch)
                 }
                 Button("Update") {
                     PersistenceController.shared.batchUpdate(entity: Item.entity())
                 }
 
-                List {
-                    ForEach(items) { item in
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                ItemListView()
+                    .id(id)
+                    .toolbar {
+                        #if os(iOS)
+                        EditButton()
+                        #endif
                     }
-                    .onDelete(perform: deleteItems)
-                }
-                .toolbar {
-                    #if os(iOS)
-                    EditButton()
-                    #endif
-                }
             }
         }
     }
@@ -54,27 +50,14 @@ struct CloudKitTestView: View {
             newItem.timestamp = Date()
 
             PersistenceController.shared.save()
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            PersistenceController.shared.save()
+            
+            id = UUID()
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
 struct CloudKitTestView_Previews: PreviewProvider {
     static var previews: some View {
-        CloudKitView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        CloudKitTest2View().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

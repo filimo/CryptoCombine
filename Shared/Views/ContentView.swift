@@ -19,8 +19,8 @@ struct ContentView: View {
 //            .eraseToAnyPublisher()
 //    }
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Coins_Data_Quote_Info.quote?.data?.id, ascending: true)], animation: .default)
-    private var items: FetchedResults<Coins_Data_Quote_Info>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Coins_Data_Quote.data?.id, ascending: true)], animation: .default)
+    private var items: FetchedResults<Coins_Data_Quote>
 
     init() {
 //        store.coinsInfo?.data = [] //for tests

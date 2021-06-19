@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E232" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Coins" representedClassName=".Coins" syncable="YES" codeGenerationType="category">
         <relationship name="data" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Data" inverseName="coins" inverseEntity="Data"/>
         <relationship name="status" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Status" inverseName="status" inverseEntity="Status"/>
     </entity>
     <entity name="Data" representedClassName=".Coins_Data" syncable="YES" codeGenerationType="category">
+        <attribute name="coinID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="slug" optional="YES" attributeType="String"/>
@@ -12,9 +13,18 @@
         <relationship name="coins" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coins" inverseName="data" inverseEntity="Coins"/>
         <relationship name="quote" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Quote" inverseName="data" inverseEntity="Quote"/>
     </entity>
-    <entity name="Info" representedClassName=".Coins_Data_Quote_Info" syncable="YES" codeGenerationType="category">
+    <entity name="Item" representedClassName=".Item" syncable="YES" codeGenerationType="category">
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="timestamp"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Quote" representedClassName=".Coins_Data_Quote" syncable="YES" codeGenerationType="category">
+        <attribute name="coinID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="convert" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="percentChange1h" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="percentChange7d" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
         <attribute name="percentChange24h" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -23,31 +33,19 @@
         <attribute name="percentChange90d" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="volume24h" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="quote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quote" inverseName="info" inverseEntity="Quote"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="id"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-    </entity>
-    <entity name="Quote" representedClassName=".Coins_Data_Quote" syncable="YES" codeGenerationType="category">
-        <relationship name="data" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Data" inverseName="quote" inverseEntity="Data"/>
-        <relationship name="info" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Info" inverseName="quote" inverseEntity="Info"/>
+        <relationship name="data" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Data" inverseName="quote" inverseEntity="Data"/>
     </entity>
     <entity name="Status" representedClassName=".Coins_Status" syncable="YES" codeGenerationType="category">
+        <attribute name="coinID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="totalCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="status" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coins" inverseName="status" inverseEntity="Coins"/>
+        <relationship name="status" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Coins" inverseName="status" inverseEntity="Coins"/>
     </entity>
     <elements>
-        <element name="Coins" positionX="-123.469482421875" positionY="-148.5952453613281" width="128" height="73"/>
-        <element name="Data" positionX="70.69580078125" positionY="-111.7893524169922" width="128" height="133"/>
-        <element name="Info" positionX="55.650146484375" positionY="64.05441284179688" width="128" height="208"/>
-        <element name="Item" positionX="-254.5126953125" positionY="172.5007476806641" width="128" height="44"/>
-        <element name="Quote" positionX="-272.09423828125" positionY="-41.3751220703125" width="128" height="73"/>
-        <element name="Status" positionX="-300.224365234375" positionY="-214.9352569580078" width="128" height="88"/>
+        <element name="Coins" positionX="-151.1982421875" positionY="-348.9938049316406" width="128" height="73"/>
+        <element name="Data" positionX="-69.23681640625" positionY="-174.1089630126953" width="128" height="148"/>
+        <element name="Item" positionX="-254.5126953125" positionY="172.5007476806641" width="128" height="58"/>
+        <element name="Quote" positionX="-321.072021484375" positionY="-87.65451049804688" width="128" height="223"/>
+        <element name="Status" positionX="-335.252197265625" positionY="-261.9238433837891" width="128" height="103"/>
     </elements>
 </model>

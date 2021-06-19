@@ -8,14 +8,24 @@
 import CoreData
 import SwiftUI
 
-struct CloudKitView: View {
+struct CloudKitTest2View: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @ObservedObject var store = Store.shared
 
-    @FetchRequest(entity: Coins_Data_Quote_Info.entity(), sortDescriptors: [])
-    private var items: FetchedResults<Coins_Data_Quote_Info>
-
+    @FetchRequest(fetchRequest: Coins.fetchRequestLimit(fetchLimit: 2))
+    private var items: FetchedResults<Coins>
+    
+    var coins: [Coins_Data] {
+        let result = items
+//            .suffix(2)
+            .flatMap { $0.data as? Set<Coins_Data> ?? Set<Coins_Data>() }
+        
+        print(result.count, items.count)
+        
+        return result
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -23,18 +33,20 @@ struct CloudKitView: View {
                     store.requestToCoinMarketCap()
                 }
                 Button("Clear") {
-                    store.removeAllCoins()
+                    let fetch: NSFetchRequest<NSFetchRequestResult> = Coins.fetchRequest()
+
+                    PersistenceController.shared.batchDelete(fetch: fetch)
                 }
             }
 
             List {
-                ForEach(items, id: \.id) { item in
+                ForEach(coins, id: \.self) { item in
 //                Text("Item at \(item.timestamp ?? Date(), formatter: itemFormatter)")
                     HStack {
-                        Text(item.id ?? "")
-                        Text(item.quote?.data?.name ?? "")
-                        Text(item.convert ?? "")
-                        Text("\(item.price)")
+                        Text("\(item.id)")
+                        Text(item.name ?? "")
+                        Text(item.quote?.convert ?? "")
+                        Text("\(item.quote?.price ?? 0)")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -90,8 +102,8 @@ struct CloudKitView: View {
     }()
 }
 
-struct CloudKitView_Previews: PreviewProvider {
+struct CloudKitTest2View_Previews: PreviewProvider {
     static var previews: some View {
-        CloudKitView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        CloudKitTest2View().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

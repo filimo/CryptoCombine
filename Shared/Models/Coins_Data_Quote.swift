@@ -8,11 +8,13 @@
 import CoreData
 
 class Coins_Data_Quote: NSManagedObject, Decodable {
-    enum CodingKeys: CodingKey {
-        case BTC
-        case USD
+    enum CodingKeys: String, CodingKey {
+        case price, volume24h = "volume_24h"
+        case percentChange1h = "percent_change_1h", percentChange24h = "percent_change_24h"
+        case percentChange7d = "percent_change_7d", percentChange30d = "percent_change_30d"
+        case percentChange60d = "percent_change_60d", percentChange90d = "percent_change_90d"
     }
-
+    
     required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[CodingUserInfoKey.managedObjectContext] as? NSManagedObjectContext else {
             throw DecoderConfigurationError.missingManagedObjectContext
@@ -22,12 +24,15 @@ class Coins_Data_Quote: NSManagedObject, Decodable {
 
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        if container.contains(.BTC) {
-            self.info = try container.decode(Coins_Data_Quote_Info.self, forKey: .BTC)
-            self.info?.convert = "BTC"
-        }
-        if container.contains(.USD) {
-            self.info?.convert = "USD"
-        }
-    }
+        self.price = try container.decode(Double.self, forKey: .price)
+        self.volume24h = try container.decode(Double.self, forKey: .volume24h)
+
+        self.percentChange1h = try container.decode(Double.self, forKey: .percentChange1h)
+        self.percentChange24h = try container.decode(Double.self, forKey: .percentChange24h)
+
+        self.percentChange7d = try container.decode(Double.self, forKey: .percentChange7d)
+        self.percentChange30d = try container.decode(Double.self, forKey: .percentChange30d)
+        self.percentChange60d = try container.decode(Double.self, forKey: .percentChange60d)
+        self.percentChange90d = try container.decode(Double.self, forKey: .percentChange90d)
+    }    
 }

@@ -106,14 +106,13 @@ extension Store {
                 },
                 receiveValue: { btcData, usdData in
                     do {
-                        try self.viewContext.execute(Coins.removeAllRequest)
-
+//                        try self.viewContext.execute(Coins.removeAllRequest)
                         Coins.decoder.userInfo[.managedObjectContext] = self.viewContext
-
+                        
                         _ = try Coins.decoder.decode(Coins.self, from: btcData)
                         _ = try Coins.decoder.decode(Coins.self, from: usdData)
 
-                        try self.viewContext.save()
+                        PersistenceController.shared.save()
                     } catch {
                         let nserror = error as NSError
                         fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -123,7 +122,7 @@ extension Store {
 
     func removeAllCoins() {
         do {
-            try viewContext.execute(Coins.removeAllRequest)
+            try viewContext.execute(Coins.deleteAllRequest)
         } catch {
             print(error)
         }

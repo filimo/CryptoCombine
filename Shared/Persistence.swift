@@ -71,9 +71,14 @@ struct PersistenceController {
             do {
                 try context.save()
             } catch {
-                // Show some error here
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+    
+    func reset() {
+        container.viewContext.reset()
     }
 
     func execute(_ request: NSPersistentStoreRequest) {
@@ -119,6 +124,28 @@ struct PersistenceController {
                 let changes = [NSUpdatedObjectsKey: objectIDArray]
 
                 NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes as [AnyHashable: Any], into: [viewContext])
+                
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+    
+    func batchUpdate2(entity: NSEntityDescription) {
+        viewContext.perform {
+            do {
+                let request = NSBatchUpdateRequest(entity: entity)
+
+                request.resultType = .updatedObjectIDsResultType
+                request.propertiesToUpdate = ["timestamp": Date()]
+
+                let result = try viewContext.execute(request) as? NSBatchUpdateResult
+                let objectIDArray = result?.result as? [NSManagedObjectID]
+                let changes = [NSUpdatedObjectsKey: objectIDArray]
+
+                NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes as [AnyHashable: Any], into: [viewContext])
+                
             } catch {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
