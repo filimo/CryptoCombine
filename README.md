@@ -1,5 +1,7 @@
 # CryptoCombine
 
+[Если у вас есть вопросы по SwiftUI и другим новым frameworks](https://t.me/swift_ui) <br>
+
 ### macOS version is under development, iOS version will come in the future
 
 The next version will be emplemented Core Data (Server->CoreData->SwiftUI)
